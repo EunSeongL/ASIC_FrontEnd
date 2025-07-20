@@ -41,7 +41,6 @@ function [fft_out, module2_out] = fft_fixed(fft_mode, fft_in)
 
     for nn = 1:N
         bfly00(nn) = bfly00_tmp(nn)*fac8_0(ceil(nn/128));
-        bfly00(nn) = bfly00(nn) / 2;
         bfly00(nn) = arrayfun(FIX4_6, bfly00(nn));
     end
 
