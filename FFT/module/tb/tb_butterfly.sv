@@ -1,3 +1,4 @@
+// tb for bfly00
 `timescale 1ns / 1ps
 
 module tb_butterfly ();
