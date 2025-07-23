@@ -17,9 +17,8 @@ module bfly #(
     output logic signed [WIDTH:0] dout1_q[0:15],   
     output logic signed [WIDTH:0] dout2_i[0:15],  // sub
     output logic signed [WIDTH:0] dout2_q[0:15]
-
-
 );
+    parameter TW = 9; // <2.7>
  
     logic [1:0] tw_addr;
     logic signed [9:0] tw_re, tw_im;
@@ -79,9 +78,9 @@ module bfly #(
     );
 
     cmul #(
-        .BFLY (WIDTH),    
-        .TW   (9),       
-        .WIDTH(WIDTH)   
+        .BFLY (WIDTH+1),    
+        .TW   (TW),       
+        .WIDTH(WIDTH+1)   
     ) u_cmul1 (
         .bfly_re(out1_i),
         .bfly_im(out1_q),
@@ -92,9 +91,9 @@ module bfly #(
     );
 
     cmul #(
-        .BFLY (WIDTH),
-        .TW   (9),
-        .WIDTH(WIDTH)
+        .BFLY (WIDTH+1),
+        .TW   (TW),
+        .WIDTH(WIDTH+1)
     ) u_cmul2 (
         .bfly_re(out2_i),
         .bfly_im(out2_q),
