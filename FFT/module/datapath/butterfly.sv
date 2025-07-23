@@ -10,20 +10,21 @@ module butterfly #(
     input clk,
     input rstn,
 
-    input signed [IN_WIDTH-1:0] din_i   [NUM-1:0],  //Re value
-    input signed [IN_WIDTH-1:0] din_q   [NUM-1:0],  //Im value
+    input signed [IN_WIDTH-1:0] din_i   [0:NUM-1],  //Re value
+    input signed [IN_WIDTH-1:0] din_q   [0:NUM-1],  //Im value
     input                       valid_in,           //valid input
 
-    output signed [OUT_WIDTH-1:0] do1_re,    //plus Re out
-    output signed [OUT_WIDTH-1:0] do1_im,    //plus Im out
-    output signed [OUT_WIDTH-1:0] do2_re,    //minus Re out
-    output signed [OUT_WIDTH-1:0] do2_im,    //minus Im out
+    output signed [OUT_WIDTH-1:0] do1_re[0:NUM-1],    //plus Re out
+    output signed [OUT_WIDTH-1:0] do1_im[0:NUM-1],    //plus Im out
+    output signed [OUT_WIDTH-1:0] do2_re[0:NUM-1],    //minus Re out
+    output signed [OUT_WIDTH-1:0] do2_im[0:NUM-1],    //minus Im out
     output                        valid_out  //valid output
 );
 
     logic [$clog2(COUNT)-1:0] count;  //0~511
     logic [1:0] shift_reg_cntl;  //00: 대기, 01: reg write, 10:reg_read
-    logic signed [IN_WIDTH-1:0] shift_reg_val_re, shift_reg_val_im;
+    logic signed [IN_WIDTH-1:0] shift_reg_val_re[0:NUM-1];
+    logic signed [IN_WIDTH-1:0] shift_reg_val_im[0:NUM-1];
     logic bfly_en;  //0: 대기, 1: bfly계산
 
     assign shift_reg_cntl = (count >= (COUNT/2)) ? 2'b10 : ( valid_in ? 2'b01 : 2'b00);

@@ -61,7 +61,7 @@ module bfly #(
         .SIG(SIG),
         .INT(INT),
         .FLT(FLT),
-        .WIDTH(WIDTH+1)
+        .WIDTH(WIDTH)
     ) u_bfly2 (
         .din1_re(din1_i),
         .din1_im(din1_q),
@@ -79,31 +79,40 @@ module bfly #(
         .dout_im(tw_im)
     );
 
-    cmul #(
-        .BFLY (WIDTH+1),    
-        .TW   (TW),       
-        .WIDTH(WIDTH+1)   
-    ) u_cmul1 (
-        .bfly_re(out1_i),
-        .bfly_im(out1_q),
-        .tw_re(tw_re),
-        .tw_im(tw_im),
-        .out_re(dout1_re),
-        .out_im(dout1_im)
-    );
+    genvar i;
+generate
+    for (i = 0; i < 16; i = i + 1) begin : gen_cmul
+        cmul #(
+            .BFLY (WIDTH+1),
+            .TW   (TW),
+            .WIDTH(WIDTH+1)
+        ) u_cmul_inst (
+            .bfly_re(out1_i[i]),
+            .bfly_im(out1_q[i]),
+            .tw_re(tw_re),
+            .tw_im(tw_im),
+            .out_re(dout1_re[i]),
+            .out_im(dout1_im[i])
+        );
+    end
+endgenerate
 
-    cmul #(
-        .BFLY (WIDTH+1),
-        .TW   (TW),
-        .WIDTH(WIDTH+1)
-    ) u_cmul2 (
-        .bfly_re(out2_i),
-        .bfly_im(out2_q),
-        .tw_re(tw_re),
-        .tw_im(tw_im),
-        .out_re(dout2_re),
-        .out_im(dout2_im)
-    );
+    generate
+    for (i = 0; i < 16; i = i + 1) begin : gen_cmul2
+        cmul #(
+            .BFLY (WIDTH+1),
+            .TW   (TW),
+            .WIDTH(WIDTH+1)
+        ) u_cmul_inst2 (
+            .bfly_re(out2_i[i]),
+            .bfly_im(out2_q[i]),
+            .tw_re(tw_re),
+            .tw_im(tw_im),
+            .out_re(dout2_re[i]),
+            .out_im(dout2_im[i])
+        );
+    end
+endgenerate
    
 
 endmodule
