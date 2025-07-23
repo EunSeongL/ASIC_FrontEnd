@@ -19,7 +19,7 @@ module bfly #(
     output logic signed [WIDTH:0] dout2_q[0:15]
 );
     parameter TW = 9; // <2.7>
- 
+
     logic [1:0] tw_addr;
     logic signed [9:0] tw_re, tw_im;
 
