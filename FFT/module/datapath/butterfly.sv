@@ -1,4 +1,4 @@
-`timescale 1ns / 10ps
+`timescale 1ns / 1ps
 
 module butterfly #(
     parameter IN_WIDTH  = 9,          //input bit width
