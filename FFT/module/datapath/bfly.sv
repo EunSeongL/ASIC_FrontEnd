@@ -80,7 +80,7 @@ module bfly #(
 
     cmul #(
         .BFLY (WIDTH),    
-        .TW   (10),       
+        .TW   (9),       
         .WIDTH(WIDTH)   
     ) u_cmul1 (
         .bfly_re(out1_i),
@@ -93,7 +93,7 @@ module bfly #(
 
     cmul #(
         .BFLY (WIDTH),
-        .TW   (10),
+        .TW   (9),
         .WIDTH(WIDTH)
     ) u_cmul2 (
         .bfly_re(out2_i),
