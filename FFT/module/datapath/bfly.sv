@@ -1,3 +1,5 @@
+`timescale 1ns/1ps
+
 module bfly #(
     parameter SIG = 1,
     parameter INT = 2,
@@ -23,8 +25,8 @@ module bfly #(
     logic [1:0] tw_addr;
     logic signed [9:0] tw_re, tw_im;
 
-    logic signed [WIDTH:0] out1_i, out1_q;
-    logic signed [WIDTH:0] out2_i, out2_q;
+    logic signed [WIDTH:0] out1_i[0:15], out1_q[0:15];
+    logic signed [WIDTH:0] out2_i[0:15], out2_q[0:15];
 
     logic [8:0] cnt;
 
@@ -57,14 +59,14 @@ module bfly #(
 
     bfly2 #(
         .SIG(SIG),
-        .INT(INT+1),
+        .INT(INT),
         .FLT(FLT),
         .WIDTH(WIDTH+1)
     ) u_bfly2 (
-        .din1_re(sel_din1_i),
-        .din1_im(sel_din1_q),
-        .din2_re(sel_din2_i),
-        .din2_im(sel_din2_q),
+        .din1_re(din1_i),
+        .din1_im(din1_q),
+        .din2_re(din2_i),
+        .din2_im(din2_q),
         .dout1_re(out1_i),      // 실수 덧셈 
         .dout1_im(out1_q),      // 허수 덧셈
         .dout2_re(out2_i),      // 실수 뺄셈
