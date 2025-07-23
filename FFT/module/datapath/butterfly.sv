@@ -46,7 +46,7 @@ module butterfly #(
 
     shift_reg #(
         .WIDTH(9),
-        .DELAY_LENGTH(256)
+        .DELAY_LENGTH(16)
     ) U_SHIFT_REG_256 (
         .clk (clk),
         .rstn(rstn),
