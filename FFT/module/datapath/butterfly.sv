@@ -32,21 +32,23 @@ module butterfly #(
     assign valid_out = (count >= (COUNT / 2)+3) ? 1 : 0;
 
     always @(posedge clk, negedge rstn) begin
-        if (~rstn) begin
-            count <= 0;
+    if (~rstn) begin
+        count <= 0;
+    end else begin
+        if (valid_in) begin
+            count <= count + 1;
         end else begin
-            if (valid_in) begin
-                if (count >= COUNT+2) begin
-                    count <= 0;
-                end else begin
-                    count <= count + 1;
-                end
+            if (count > 0) begin
+                count <= count + 1;
             end
-	    else begin
-		    count <= 0;
-	    end
+        end
+
+        if (count > (COUNT + 1)) begin
+            count <= 0;
         end
     end
+end
+
 
     shift_reg #(
         .WIDTH(9),
