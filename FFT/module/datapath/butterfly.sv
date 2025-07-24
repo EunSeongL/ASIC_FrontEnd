@@ -14,22 +14,22 @@ module butterfly #(
     input signed [IN_WIDTH-1:0] din_q   [0:NUM-1],  //Im value
     input                       valid_in,           //valid input
 
-    output signed [OUT_WIDTH-1:0] do1_re[0:NUM-1],    //plus Re out
-    output signed [OUT_WIDTH-1:0] do1_im[0:NUM-1],    //plus Im out
-    output signed [OUT_WIDTH-1:0] do2_re[0:NUM-1],    //minus Re out
-    output signed [OUT_WIDTH-1:0] do2_im[0:NUM-1],    //minus Im out
+    output signed [OUT_WIDTH-1:0] do1_re [0:NUM-1],    //plus Re out
+    output signed [OUT_WIDTH-1:0] do1_im [0:NUM-1],    //plus Im out
+    output signed [OUT_WIDTH-1:0] do2_re [0:NUM-1],    //minus Re out
+    output signed [OUT_WIDTH-1:0] do2_im [0:NUM-1],    //minus Im out
     output                        valid_out  //valid output
 );
 
-    logic [$clog2(COUNT)-1:0] count;  //0~511
+    logic [$clog2(COUNT+2)-1:0] count;  //0~33
     logic [1:0] shift_reg_cntl;  //00: 대기, 01: reg write, 10:reg_read
     logic signed [IN_WIDTH-1:0] shift_reg_val_re[0:NUM-1];
     logic signed [IN_WIDTH-1:0] shift_reg_val_im[0:NUM-1];
     logic bfly_en;  //0: 대기, 1: bfly계산
 
-    assign shift_reg_cntl = (count >= (COUNT/2)) ? 2'b10 : ( valid_in ? 2'b01 : 2'b00);
+    assign shift_reg_cntl = (count >= (COUNT/2)) ? 2'b01 : ( valid_in ? 2'b10 : 2'b00);
     assign bfly_en = (count >= (COUNT / 2)) ? 1 : 0;
-    assign valid_out = (count >= (COUNT / 2)) ? 1 : 0;
+    assign valid_out = (count >= (COUNT / 2)+3) ? 1 : 0;
 
     always @(posedge clk, negedge rstn) begin
         if (~rstn) begin
@@ -42,6 +42,9 @@ module butterfly #(
                     count <= count + 1;
                 end
             end
+	    else begin
+		    count <= 0;
+	    end
         end
     end
 
