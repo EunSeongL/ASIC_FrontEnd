@@ -1,131 +1,181 @@
-`timescale 1ns/1ps
+`timescale 1ns / 1ps
 
 module cbfp_stage0 #(
-    parameter N = 512,              // 전체 샘플 수
-    parameter BW_IN = 23,           // 입력 데이터 비트 수 <9.13>
-    parameter BW_OUT = 11,          // 출력 데이터 비트 수
-    parameter BLOCK_SIZE = 64,      // 각 블록 당 데이터 수
-    parameter TARGET_INT_BITS = 12, // 목표 정수부 비트 수
-    parameter NUM_BLOCKS = 8        // 블록 개수
-)(
-    input wire clk,
-    input wire rstn,
-    input wire signed [BW_IN-1:0] real_in [0:N-1],
-    input wire signed [BW_IN-1:0] imag_in [0:N-1],
+    parameter int BW_IN = 23,
+    parameter int BW_OUT = 11,
+    parameter int TARGET_INT_BITS = 12,
+    parameter int BLOCK_SIZE = 64,
+    parameter int BATCH_SIZE = 16
+) (
+    input logic                    clk,
+    input logic                    rstn,
+    input logic signed [BW_IN-1:0] real_in [0:BATCH_SIZE-1],
+    input logic signed [BW_IN-1:0] imag_in [0:BATCH_SIZE-1],
+    input logic                    in_valid,
 
-    output reg signed [BW_OUT-1:0] real_out [0:N-1],
-    output reg signed [BW_OUT-1:0] imag_out [0:N-1],
-    output reg [4:0] index_out [0:N-1],  // shift amount 기록
-    output reg valid_out
+    output logic signed [BW_OUT-1:0] real_out [0:BATCH_SIZE-1],
+    output logic signed [BW_OUT-1:0] imag_out [0:BATCH_SIZE-1],
+    output logic        [       4:0] index_out[0:BATCH_SIZE-1],
+    output logic                     valid_out
 );
+    // 입출력 및 shift 카운터
+    logic [2:0] input_cnt;
+    logic [2:0] output_cnt;
+    int i,j,k;
 
-  integer blk, samp;
-  reg [4:0] cnt1_re [0:NUM_BLOCKS-1];
-  reg [4:0] cnt1_im [0:NUM_BLOCKS-1];
-  reg [4:0] cnt_blk  [0:NUM_BLOCKS-1]; // 공통 shift amount
-  reg [2:0] valid_cnt;
-  reg signed [BW_OUT-1:0] real_out_reg [0:N-1];
-  reg signed [BW_OUT-1:0] imag_out_reg [0:N-1];
-  reg [4:0] index_out_reg [0:N-1];
+    // 값 저장 버퍼
+    logic signed [BW_IN-1:0] real_buf [0:BLOCK_SIZE-1];
+    logic signed [BW_IN-1:0] imag_buf [0:BLOCK_SIZE-1];
 
-  function [4:0] mag_detect;
-    input signed [BW_IN-1:0] val;
-    integer i;
-    reg found;
-    begin
-      mag_detect = 0;
-      found = 1'b0;
-      for (i = BW_IN-2; i >= 0; i = i - 1) begin
-        if (!found && (val[i] !== val[BW_IN-1])) begin
-          mag_detect = BW_IN - 1 - i;
-          found = 1'b1;
+    // 정규화에 사용되는 MSB, 최소값 탐색
+    logic [5:0] msb_re [0:BLOCK_SIZE-1];
+    logic [5:0] msb_im [0:BLOCK_SIZE-1];
+
+    // 전체 64포인트 중 가장 작은 MSB가 저장
+    logic [5:0] min_chain [0:BLOCK_SIZE-1];
+
+    // 정규화 shift 관련 제어
+    logic shift_val_loaded;
+    logic [4:0] shift_val;
+
+    // 정규화 결과 저장
+    logic signed [BW_OUT-1:0] norm_real [0:BLOCK_SIZE-1];
+    logic signed [BW_OUT-1:0] norm_imag [0:BLOCK_SIZE-1];
+    logic [4:0] norm_index [0:BLOCK_SIZE-1];
+
+    
+    generate
+        for (genvar g = 0; g < BLOCK_SIZE; g++) begin
+            mag_detect #(
+                .WIDTH(BW_IN)
+            ) u_mag_re (
+                .in_dat(real_buf[g]),
+                .cnt(msb_re[g])
+            );
+            mag_detect #(
+                .WIDTH(BW_IN)
+            ) u_mag_im (
+                .in_dat(imag_buf[g]),
+                .cnt(msb_im[g])
+            );
         end
-      end
-    end
-  endfunction
+    endgenerate
 
-  always @(posedge clk or negedge rstn) begin
-    if (!rstn) begin
-      for (blk = 0; blk < NUM_BLOCKS; blk = blk + 1) begin
-        cnt1_re[blk] <= 5'd31;
-        cnt1_im[blk] <= 5'd31;
-        cnt_blk[blk] <= 5'd0;
-      end
-    end else begin
-      // 1단계: 최대 정수부 비트 위치 측정
-      for (blk = 0; blk < NUM_BLOCKS; blk = blk + 1) begin
-        for (samp = 0; samp < BLOCK_SIZE; samp = samp + 1) begin
-          integer idx;
-          reg [4:0] msb_re, msb_im;
-          idx = blk * BLOCK_SIZE + samp;
-          msb_re = mag_detect(real_in[idx]);
-          msb_im = mag_detect(imag_in[idx]);
-          if (msb_re < cnt1_re[blk]) cnt1_re[blk] <= msb_re;
-          if (msb_im < cnt1_im[blk]) cnt1_im[blk] <= msb_im;
+    generate
+        for (genvar q = 0; q < BLOCK_SIZE; q++) begin
+            if (q == 0) begin
+                assign min_chain[0] = (msb_re[0] < msb_im[0]) ? msb_re[0] : msb_im[0];
+            end else begin
+                min_detect #(
+                    .WIDTH(6)
+                ) u_min (
+                    .cnt((msb_re[q] < msb_im[q]) ? msb_re[q] : msb_im[q]),
+                    .temp(min_chain[q-1]),
+                    .index(4'd0),
+                    .min_val(min_chain[q])
+                );
+            end
         end
-      end
+    endgenerate
 
-      // 2단계: 공통 shift amount 선택
-      for (blk = 0; blk < NUM_BLOCKS; blk = blk + 1) begin
-        cnt_blk[blk] <= (cnt1_re[blk] < cnt1_im[blk]) ? cnt1_re[blk] : cnt1_im[blk];
-      end
+    parameter IDLE = 0, COLLECT = 1, PROCESS = 2, OUTPUT = 3;
+    logic [1:0] c_state, n_state;
 
-      // 3단계: 정규화 적용 (MUX style)
-      for (blk = 0; blk < NUM_BLOCKS; blk = blk + 1) begin
-        for (samp = 0; samp < BLOCK_SIZE; samp = samp + 1) begin
-          integer idx;
-          reg signed [BW_IN+7:0] shifted_re_hi, shifted_re_lo;
-          reg signed [BW_IN+7:0] shifted_im_hi, shifted_im_lo;
-          reg signed [BW_IN+7:0] temp_re, temp_im;
-          reg [4:0] shift_amt;
-          idx = blk * BLOCK_SIZE + samp;
-          shift_amt = cnt_blk[blk];
-          index_out_reg[idx] <= shift_amt;
-      
-          // real part
-          shifted_re_hi = real_in[idx] <<< shift_amt;
-          shifted_re_lo = real_in[idx] >>> (TARGET_INT_BITS - shift_amt);
-          temp_re = (shift_amt > TARGET_INT_BITS) ? (shifted_re_hi >>> TARGET_INT_BITS) : shifted_re_lo;
-          real_out_reg[idx] <= $signed(temp_re[BW_OUT-1:0]);
-      
-          // imag part
-          shifted_im_hi = imag_in[idx] <<< shift_amt;
-          shifted_im_lo = imag_in[idx] >>> (TARGET_INT_BITS - shift_amt);
-          temp_im = (shift_amt > TARGET_INT_BITS) ? (shifted_im_hi >>> TARGET_INT_BITS) : shifted_im_lo;
-          imag_out_reg[idx] <= $signed(temp_im[BW_OUT-1:0]);
+    always @(posedge clk or negedge rstn) begin
+        if (!rstn) begin
+            c_state <= IDLE;
+        end else begin
+            c_state <= n_state;
         end
-      end
     end
-  end
-  always @(posedge clk or negedge rstn) begin
-    if (!rstn) begin
-      valid_cnt  <= 3'd0;
-      valid_out  <= 1'b0;
-    end else begin
-      if (valid_cnt < 3) begin
-        valid_cnt <= valid_cnt + 1;
-        valid_out <= 1'b0;
-      end else begin
-        valid_cnt <= 1'b0;
-        valid_out <= 1'b1;
-      end
-    end
-  end
 
-  integer k;
-  always @(posedge clk or negedge rstn) begin
-    if (!rstn) begin
-      for (k = 0; k < N; k = k + 1) begin
-        real_out[k] <= 0;
-        imag_out[k] <= 0;
-        index_out[k] <= 0;
-      end
-    end else if (valid_out) begin
-      for (k = 0; k < N; k = k + 1) begin
-        real_out[k] <= real_out_reg[k];
-        imag_out[k] <= imag_out_reg[k];
-        index_out[k] <= index_out_reg[k];
-      end
+    always @(*) begin
+        n_state = c_state;
+        case (c_state)
+            IDLE: begin
+                n_state = COLLECT;
+            end
+            COLLECT: begin
+                n_state = (input_cnt == 2'b11) ? PROCESS : COLLECT;
+            end
+            PROCESS: begin
+                if(shift_val_loaded) begin
+                    n_state = OUTPUT;
+                end
+            end
+            OUTPUT: begin
+                n_state = (output_cnt == 2'b11) ? IDLE : OUTPUT;
+            end
+            default: n_state = c_state;
+        endcase
     end
-  end
+
+
+    always_ff @(posedge clk or negedge rstn) begin
+        if (!rstn) begin
+            input_cnt <= 0;
+        end else if (c_state == COLLECT && in_valid) begin
+            for (i = 0; i < BATCH_SIZE; i++) begin
+                automatic int idx = input_cnt * BATCH_SIZE + i;
+                real_buf[idx] <= real_in[i];
+                imag_buf[idx] <= imag_in[i];
+            end
+            input_cnt <= input_cnt + 1;
+        end else if(c_state == PROCESS) input_cnt <= 0;
+    end
+
+
+    always @(posedge clk or negedge rstn) begin
+        if (!rstn) begin
+            shift_val <= 0;
+            shift_val_loaded <= 0;
+        end else if (c_state == PROCESS && !shift_val_loaded) begin
+            shift_val <= min_chain[BLOCK_SIZE-1];
+            shift_val_loaded <= 1; 
+        end else if (c_state != PROCESS) begin
+            shift_val_loaded <= 0;
+        end
+    end
+
+    logic signed [BW_IN+7:0] temp_r;
+    logic signed [BW_IN+7:0] temp_i;
+    always @(posedge clk or negedge rstn) begin
+        if(!rstn) begin
+            temp_r <= 0;
+            temp_i <= 0;
+         
+        end
+        if (c_state == PROCESS && shift_val_loaded) begin
+            for (j = 0; j < BLOCK_SIZE; j = j + 1) begin
+                temp_r = (shift_val > 12) ? (real_buf[j]  <<<  shift_val) : (real_buf[j] >>> (-12+shift_val));
+                temp_i = (shift_val > 12) ? (imag_buf[j]  <<<  shift_val) : (imag_buf[j] >>> (-12+shift_val));
+
+                norm_real[j]  <= temp_r[BW_OUT-1:0];
+                norm_imag[j]  <= temp_i[BW_OUT-1:0];
+                norm_index[j] <= shift_val[4:0];
+               
+            end
+        end
+    end
+
+    always @(posedge clk or negedge rstn) begin
+        if (!rstn) begin
+            output_cnt <= 0;
+            valid_out  <= 0;
+        end else if (c_state == OUTPUT) begin
+            valid_out <= 1;
+            for (k = 0; k < BATCH_SIZE; k = k + 1) begin
+                automatic int idx_o = output_cnt * BATCH_SIZE + k;
+                real_out[k]  <= norm_real[idx_o];
+                imag_out[k]  <= norm_imag[idx_o];
+                index_out[k] <= norm_index[idx_o];
+            end
+            output_cnt <= output_cnt + 1;
+        end else if (c_state == (IDLE || COLLECT)) begin
+            valid_out <= 0;
+            output_cnt <= 0;
+        end
+    end
+
 endmodule
+
