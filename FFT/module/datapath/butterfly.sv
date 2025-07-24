@@ -14,11 +14,11 @@ module butterfly #(
     input signed [IN_WIDTH-1:0] din_q   [0:NUM-1],  //Im value
     input                       valid_in,           //valid input
 
-    output signed [OUT_WIDTH-1:0] do1_re [0:NUM-1],    //plus Re out
-    output signed [OUT_WIDTH-1:0] do1_im [0:NUM-1],    //plus Im out
-    output signed [OUT_WIDTH-1:0] do2_re [0:NUM-1],    //minus Re out
-    output signed [OUT_WIDTH-1:0] do2_im [0:NUM-1],    //minus Im out
-    output                        valid_out  //valid output
+    output signed [OUT_WIDTH-1:0] do1_re   [0:NUM-1],  //plus Re out
+    output signed [OUT_WIDTH-1:0] do1_im   [0:NUM-1],  //plus Im out
+    output signed [OUT_WIDTH-1:0] do2_re   [0:NUM-1],  //minus Re out
+    output signed [OUT_WIDTH-1:0] do2_im   [0:NUM-1],  //minus Im out
+    output                        valid_out            //valid output
 );
 
     logic [$clog2(COUNT+2)-1:0] count;  //0~33
@@ -29,25 +29,25 @@ module butterfly #(
 
     assign shift_reg_cntl = (count >= (COUNT/2)) ? 2'b01 : ( valid_in ? 2'b10 : 2'b00);
     assign bfly_en = (count >= (COUNT / 2)) ? 1 : 0;
-    assign valid_out = (count >= (COUNT / 2)+3) ? 1 : 0;
+    assign valid_out = (count >= (COUNT / 2) + 3) ? 1 : 0;
 
     always @(posedge clk, negedge rstn) begin
-    if (~rstn) begin
-        count <= 0;
-    end else begin
-        if (valid_in) begin
-            count <= count + 1;
-        end else begin
-            if (count > 0) begin
+        if (~rstn) begin
+            count <= 0;
+        end else begin  //FSM으로 수정 필요
+            if (valid_in) begin
                 count <= count + 1;
+            end else begin
+                if (count > 0) begin
+                    count <= count + 1;
+                end
+            end
+
+            if (count > (COUNT + 1)) begin
+                count <= 0;
             end
         end
-
-        if (count > (COUNT + 1)) begin
-            count <= 0;
-        end
     end
-end
 
 
     shift_reg #(
