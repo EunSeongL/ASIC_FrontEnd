@@ -1,109 +1,84 @@
 `timescale 1ns/1ps
 
-module bfly #(                          // <3.6> format
+module bfly #(
     parameter SIG = 1,
     parameter INT = 2,
     parameter FLT = 6,
     parameter WIDTH = SIG + INT + FLT   // 9
-) (
+)(
     input clk,
     input rstn,
-
     input bfly_en,
-    input signed [WIDTH-1:0] din1_i[0:15],  // 
-    input signed [WIDTH-1:0] din1_q[0:15],  // 
-    input signed [WIDTH-1:0] din2_i[0:15],  // shift reg
-    input signed [WIDTH-1:0] din2_q[0:15],  // shift reg
+
+    input signed [WIDTH-1:0] din1_i[0:15],  
+    input signed [WIDTH-1:0] din1_q[0:15],  
+    input signed [WIDTH-1:0] din2_i[0:15],  
+    input signed [WIDTH-1:0] din2_q[0:15],  
 
     output logic signed [WIDTH:0] dout1_i[0:15],  // add  
     output logic signed [WIDTH:0] dout1_q[0:15],   
     output logic signed [WIDTH:0] dout2_i[0:15],  // sub
     output logic signed [WIDTH:0] dout2_q[0:15]
 );
-    parameter TW = 9; // <2.7>
 
-    logic [1:0] tw_addr;
-    logic [8:0] cnt;
-    logic signed [8:0] tw_re, tw_im;
-
+    logic [3:0] cnt;
+    logic [3:0] cnt_d;
     logic signed [WIDTH:0] out1_i[0:15], out1_q[0:15];
     logic signed [WIDTH:0] out2_i[0:15], out2_q[0:15];
 
+    // 카운터: 입력 블록 진행
     always_ff @(posedge clk or negedge rstn) begin
         if (!rstn)
-            cnt <= 0;
+            cnt_d <= 0;
         else if (bfly_en)
-            cnt <= cnt + 1;
+            cnt_d <= cnt + 1;
         else
-            cnt <= 0;
+            cnt_d <= 0;
     end
 
-    // tw_addr 0~3 cnt 상위 두 비트로 판단
-    always@(*) begin
-        if (cnt < 512) begin
-            tw_addr = cnt[8:7];
+    always_ff @(posedge clk or negedge rstn) begin : blockName
+        if(!rstn) begin
+            cnt <= 0;
         end
         else begin
-            tw_addr = 0;
+            cnt <= cnt_d;
         end
     end
 
-    mem_tw4 u_mem_tw4 (
-        .addr       (tw_addr),
-        .dout_re    (tw_re),
-        .dout_im    (tw_im)
-    );
-
+    // 버터플라이 add/sub
     bfly_add #(
         .SIG(SIG),
         .INT(INT),
         .FLT(FLT),
-        .WIDTH(WIDTH)            // <4.6> format
+        .WIDTH(WIDTH)
     ) u_bfly_add (
-        .clk        (clk),
-        .rstn       (rstn),
-        .din1_re    (din1_i),      // 9 width       
-        .din1_im    (din1_q),      // 9 width
-        .din2_re    (din2_i),      // 9 width
-        .din2_im    (din2_q),      // 9 width
-        .dout1_re   (out1_i),      // 10 width (실수 덧셈) 
-        .dout1_im   (out1_q),      // 10 width (허수 덧셈)
-        .dout2_re   (out2_i),      // 10 width (실수 뺄셈)
-        .dout2_im   (out2_q)       // 10 width (허수 뺄셈)
-    );
-
-    bfly_mul #(                    // upper 0~256 twiddle 1,1
-        .BFLY (WIDTH+1),
-        .TW   (TW),
-        .WIDTH(WIDTH+1),           // <4.6> format
-        .N    (16)
-    ) u_bfly_mul1 (
-        .clk(clk),
-        .rstn(rstn),
-        .bfly_re(out1_i),
-        .bfly_im(out1_q),
-        .tw_re(tw_re),
-        .tw_im(tw_im),
-        .out_re(dout1_i),
-        .out_im(dout1_q)
-    );  
-
-    bfly_mul #(                    // lower 257~511 twiddle 1,-j
-        .BFLY (WIDTH+1),
-        .TW   (TW),
-        .WIDTH(WIDTH+1),           // <4.6> format
-        .N    (16)
-    ) bfly_mul2 (
-        .clk(clk),
-        .rstn(rstn),
-        .bfly_re(out2_i),
-        .bfly_im(out2_q),
-        .tw_re(tw_re),
-        .tw_im(tw_im),
-        .out_re(dout2_i),
-        .out_im(dout2_q)
+        .din1_re(din1_i),
+        .din1_im(din1_q),
+        .din2_re(din2_i),
+        .din2_im(din2_q),
+        .dout1_re(out1_i),
+        .dout1_im(out1_q),
+        .dout2_re(out2_i),
+        .dout2_im(out2_q)
     );
 
    
+    always_comb begin
+        for (int i = 0; i < 16; i++) begin
+            // upper: twiddle = 1 → 그대로
+            dout1_i[i] = out1_i[i];
+            dout1_q[i] = out1_q[i];
+            // lower: 조건에 따라 1 또는 -j
+            if (cnt >= 8 && cnt < 16) begin
+                // -j 곱: 실수/허수 swap + 부호 반전
+                dout2_i[i] =  out2_q[i];
+                dout2_q[i] = -out2_i[i];
+            end else begin
+                // 그대로 (twiddle = 1)
+                dout2_i[i] = out2_i[i];
+                dout2_q[i] = out2_q[i];
+            end
+        end
+    end
 
 endmodule
