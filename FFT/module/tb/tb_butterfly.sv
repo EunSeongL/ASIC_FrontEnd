@@ -1,10 +1,9 @@
-// tb for bfly00
 `timescale 1ns / 1ps
 
 module tb_butterfly ();
     parameter WIDTH = 9;
     parameter N = 512;
-    integer file, r, i, j;
+    integer file, r, i, j, i_blk, j_blk;
     logic signed [WIDTH-1:0] din_i_data [N-1:0];  // 3.6 포맷이면 총 9비트 필요 (부호 포함)
     logic signed [WIDTH-1:0] din_q_data[N-1:0];
     logic signed [WIDTH-1:0] din_i[15:0];
@@ -42,16 +41,19 @@ module tb_butterfly ();
         valid_in = 0;
         #15 rstn = 1;
 
-        for (i = 0; i < N / 16; i = i + 1) begin
-            // 16개씩 슬라이스 할당
-            for (j = 0; j < 16; j = j + 1) begin
-                din_i[j] = din_i_data[i*16+j];
-                din_q[j] = din_q_data[i*16+j];
-            end
-            valid_in = 1;
-            @(posedge clk);
-        end
-        valid_in = 0;
+	i_blk = 0; j_blk = 0;
+       
+	for (i_blk = 0; i_blk < N / 16; i_blk = i_blk + 1) begin
+    		@(posedge clk); // 1. 데이터 준비 전에 대기
+    		for (j_blk = 0; j_blk < 16; j_blk = j_blk + 1) begin
+        		din_i[j_blk] = din_i_data[(i_blk*16)+j_blk];
+        		din_q[j_blk] = din_q_data[(i_blk*16)+j_blk];
+    		end
+    		valid_in = 1;  // 2. valid 활성화
+    		#1; // 3. 모듈에서 샘플링
+	end
+	valid_in=0;
+
 
         #10000;
         $stop;
