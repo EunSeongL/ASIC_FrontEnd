@@ -36,7 +36,7 @@ module butterfly #(
             count <= 0;
         end else begin
             if (valid_in) begin
-                if (count >= COUNT) begin
+                if (count >= COUNT+2) begin
                     count <= 0;
                 end else begin
                     count <= count + 1;
