@@ -10,30 +10,23 @@ module shift_reg #(
     input write, // 16개 묶음 복소수 쓰기
     input read,  // 16개 묶음 복소수 읽기
 
-    input signed [WIDTH-1:0] data_in_real [0:15],
-    input signed [WIDTH-1:0] data_in_imag [0:15],
+    input signed [WIDTH-1:0] data_in_real [15:0],
+    input signed [WIDTH-1:0] data_in_imag [15:0],
 
-<<<<<<< HEAD
-    output logic signed [WIDTH-1:0] data_out_real [0:15],
-    output logic signed [WIDTH-1:0] data_out_imag [0:15],
-=======
     output logic signed [WIDTH-1:0] data_out_real [15:0],
-    output logic signed [WIDTH-1:0] data_out_imag [15:0],
->>>>>>> 39944c5f8d695ef08371a18bdfa3dfbfb094b311
+    output logic signed [WIDTH-1:0] data_out_imag [15:0]
 
-    output logic full,
-    output logic empty
 );
 
-    reg signed [WIDTH-1:0] shift_din_real [0:DELAY_LENGTH-1][0:15];
-    reg signed [WIDTH-1:0] shift_din_imag [0:DELAY_LENGTH-1][0:15];
+    reg signed [WIDTH-1:0] shift_din_real [DELAY_LENGTH-1:0][15:0];
+    reg signed [WIDTH-1:0] shift_din_imag [DELAY_LENGTH-1:0][15:0];
 
     reg [$clog2(DELAY_LENGTH+1)-1:0] count;
     integer i, j;
 
     // full/empty 상태 관리
-    assign full  = (count == DELAY_LENGTH);
-    assign empty = (count == 0);
+    logic full  = (count == DELAY_LENGTH);
+    logic empty = (count == 0);
 
     
     // 카운터 업데이트
@@ -96,8 +89,3 @@ module shift_reg #(
     end
 
 endmodule
-
-
-
-
-

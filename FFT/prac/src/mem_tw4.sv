@@ -1,7 +1,7 @@
 module mem_tw4 (
     input  logic [1:0] addr,        
-    output logic [8:0] dout_re,     
-    output logic [8:0] dout_im      
+    output logic signed[8:0] dout_re,     
+    output logic signed[8:0] dout_im      
 );
 
     logic [17:0] dout;

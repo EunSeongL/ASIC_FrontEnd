@@ -70,32 +70,28 @@ module cbfp_stage0 #(
         cnt_blk[blk] <= (cnt1_re[blk] < cnt1_im[blk]) ? cnt1_re[blk] : cnt1_im[blk];
       end
 
-      // 3단계: 정규화 적용
+      // 3단계: 정규화 적용 (MUX style)
       for (blk = 0; blk < NUM_BLOCKS; blk = blk + 1) begin
         for (samp = 0; samp < BLOCK_SIZE; samp = samp + 1) begin
           integer idx;
+          reg signed [BW_IN+7:0] shifted_re_hi, shifted_re_lo;
+          reg signed [BW_IN+7:0] shifted_im_hi, shifted_im_lo;
           reg signed [BW_IN+7:0] temp_re, temp_im;
           reg [4:0] shift_amt;
           idx = blk * BLOCK_SIZE + samp;
           shift_amt = cnt_blk[blk];
           index_out_reg[idx] <= shift_amt;
-
+      
           // real part
-          if (shift_amt > TARGET_INT_BITS) begin
-              temp_re = real_in[idx] <<< shift_amt;
-              temp_re = temp_re >>> TARGET_INT_BITS;
-          end else begin
-              temp_re = real_in[idx] >>> (TARGET_INT_BITS - shift_amt);
-          end
+          shifted_re_hi = real_in[idx] <<< shift_amt;
+          shifted_re_lo = real_in[idx] >>> (TARGET_INT_BITS - shift_amt);
+          temp_re = (shift_amt > TARGET_INT_BITS) ? (shifted_re_hi >>> TARGET_INT_BITS) : shifted_re_lo;
           real_out_reg[idx] <= $signed(temp_re[BW_OUT-1:0]);
-
+      
           // imag part
-          if (shift_amt > TARGET_INT_BITS) begin
-              temp_im = imag_in[idx] <<< shift_amt;
-              temp_im = temp_im >>> TARGET_INT_BITS;
-          end else begin
-              temp_im = imag_in[idx] >>> (TARGET_INT_BITS - shift_amt);
-          end
+          shifted_im_hi = imag_in[idx] <<< shift_amt;
+          shifted_im_lo = imag_in[idx] >>> (TARGET_INT_BITS - shift_amt);
+          temp_im = (shift_amt > TARGET_INT_BITS) ? (shifted_im_hi >>> TARGET_INT_BITS) : shifted_im_lo;
           imag_out_reg[idx] <= $signed(temp_im[BW_OUT-1:0]);
         end
       end
@@ -133,5 +129,3 @@ module cbfp_stage0 #(
     end
   end
 endmodule
-
-
