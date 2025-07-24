@@ -1,18 +1,18 @@
 `timescale 1ns/1ps
 
 module bfly #(
-    parameter INT = 3,
-    parameter FLT = 6,
+    parameter INT   = 3,
+    parameter FLT   = 6,
     parameter WIDTH = INT + FLT   // 9
 )(
-    input clk,
-    input rstn,
-    input bfly_en,
+    input  clk,
+    input  rstn,
+    input  bfly_en,
 
-    input signed [WIDTH-1:0] din1_i[0:15],  
-    input signed [WIDTH-1:0] din1_q[0:15],  
-    input signed [WIDTH-1:0] din2_i[0:15],  
-    input signed [WIDTH-1:0] din2_q[0:15],  
+    input  signed [WIDTH-1:0] din1_i[0:15],  
+    input  signed [WIDTH-1:0] din1_q[0:15],  
+    input  signed [WIDTH-1:0] din2_i[0:15],  
+    input  signed [WIDTH-1:0] din2_q[0:15],  
 
     output logic signed [WIDTH:0] dout1_i[0:15],  // add  
     output logic signed [WIDTH:0] dout1_q[0:15],   
@@ -21,11 +21,10 @@ module bfly #(
 );
 
     logic [4:0] cnt;
-    
+
     logic signed [WIDTH:0] out1_i[0:15], out1_q[0:15];
     logic signed [WIDTH:0] out2_i[0:15], out2_q[0:15];
 
-    // 카운터: 입력 블록 진행
     always_ff @(posedge clk or negedge rstn) begin
         if (!rstn)
             cnt <= 0;
@@ -51,19 +50,15 @@ module bfly #(
         .dout2_im(out2_q)
     );
 
-   
+    // 버터플라이 TW[1,1,1,-j] 
     always_comb begin
         for (int i = 0; i < 16; i++) begin
-            // upper: twiddle = 1 → 그대로
             dout1_i[i] = out1_i[i];
             dout1_q[i] = out1_q[i];
-            // lower: 조건에 따라 1 또는 -j
             if (cnt > 7) begin
-                // -j 곱: 실수/허수 swap + 부호 반전
                 dout2_i[i] =  out2_q[i];
                 dout2_q[i] = -out2_i[i];
             end else begin
-                // 그대로 (twiddle = 1)
                 dout2_i[i] = out2_i[i];
                 dout2_q[i] = out2_q[i];
             end
