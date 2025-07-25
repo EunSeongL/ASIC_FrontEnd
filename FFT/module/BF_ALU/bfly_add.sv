@@ -1,7 +1,7 @@
 module bfly_add #(
     parameter INT = 3,      // Integer bits
     parameter FLT = 6,      // Fractional bits
-    parameter WIDTH = SIG + INT + FLT // Total bit-width
+    parameter WIDTH = INT + FLT // Total bit-width
 )(
 
     input  signed [WIDTH-1:0] din1_re[15:0],

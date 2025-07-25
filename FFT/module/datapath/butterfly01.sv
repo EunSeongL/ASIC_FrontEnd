@@ -1,8 +1,8 @@
 `timescale 1ns / 1ps
 
-module butterfly #(
-    parameter IN_WIDTH  = 9,          //input bit width
-    parameter OUT_WIDTH = 10,         //output bit width
+module butterfly01 #(
+    parameter IN_WIDTH  = 10,          //input bit width
+    parameter OUT_WIDTH = 11,         //output bit width
     parameter NUM       = 16,         //number of line
     parameter DATA      = 512,        //number of data
     parameter COUNT     = DATA / NUM  //input data count
@@ -10,14 +10,14 @@ module butterfly #(
     input clk,
     input rstn,
 
-    input signed [IN_WIDTH-1:0] din_i   [0:NUM-1],  //Re value
-    input signed [IN_WIDTH-1:0] din_q   [0:NUM-1],  //Im value
-    input                       valid_in,           //valid input
+    input  signed [IN_WIDTH-1:0]  din_i    [0:NUM-1],  //Re value
+    input  signed [IN_WIDTH-1:0]  din_q    [0:NUM-1],  //Im value
+    input                         valid_in,           //valid input
 
-    output signed [OUT_WIDTH-1:0] do1_re   [0:NUM-1],  //plus Re out
-    output signed [OUT_WIDTH-1:0] do1_im   [0:NUM-1],  //plus Im out
-    output signed [OUT_WIDTH-1:0] do2_re   [0:NUM-1],  //minus Re out
-    output signed [OUT_WIDTH-1:0] do2_im   [0:NUM-1],  //minus Im out
+    output signed [OUT_WIDTH-1:0] do1_re_bfly01   [0:NUM-1],  //plus Re out
+    output signed [OUT_WIDTH-1:0] do1_im_bfly01   [0:NUM-1],  //plus Im out
+    output signed [OUT_WIDTH-1:0] do2_re_bfly01   [0:NUM-1],  //minus Re out
+    output signed [OUT_WIDTH-1:0] do2_im_bfly01   [0:NUM-1],  //minus Im out
     output                        valid_out            //valid output
 );
 
@@ -45,15 +45,6 @@ module butterfly #(
         end
     end
 
-
-    always @(posedge clk, negedge rstn) begin
-        if (~rstn) begin
-            count <= 0;
-        end else begin
-
-        end
-    end
-
     logic signed [IN_WIDTH-1:0] low_reg_i [0:NUM-1];
     logic signed [IN_WIDTH-1:0] low_reg_q [0:NUM-1];
     integer i;
@@ -75,8 +66,8 @@ module butterfly #(
     end
 
     shift_reg #(
-        .WIDTH(9),
-        .DELAY_LENGTH(16)
+        .WIDTH(10),
+        .DELAY_LENGTH(8)
     ) U_SHIFT_REG_256 (
         .clk (clk),
         .rstn(rstn),
@@ -91,45 +82,18 @@ module butterfly #(
         .data_out_imag(shift_reg_val_im)
     );
 
-    // bfly #(
-    //     .SIG(1),
-    //     .INT(2),
-    //     .FLT(6)
-    // ) U_BFLY_SUM_AND_MUL (
-    //     .clk (clk),
-    //     .rstn(rstn),
-
-    //     .bfly_en(bfly_en),
-    //     .din1_i (din_i),
-    //     .din1_q (din_q),
-    //     .din2_i (shift_reg_val_re),
-    //     .din2_q (shift_reg_val_im),
-
-    //     .dout1_i(do1_re),
-    //     .dout1_q(do1_im),
-    //     .dout2_i(do2_re),
-    //     .dout2_q(do2_im)
-    // );
-
-    test_bfly#(
-        .N(16),
-        .IN_BIT(9),
-        .OUT_BIT(10)
-    ) U_TEST_BFLY (
-        .clk(clk),
-        .rstn(rstn),
-
-        .bfly_en(bfly_en),
-        .din1_i(shift_reg_val_re),
-        .din1_q(shift_reg_val_im),
-        .din2_i(low_reg_i),
-        .din2_q(low_reg_q),
-        
-
-        .dout1_i(do1_re),
-        .dout1_q(do1_im),
-        .dout2_i(do2_re),
-        .dout2_q(do2_im)
+    bfly_add #(
+        .INT(4),
+        .FLT(6)
+    ) u_bfly_add (
+        .din1_re(din_i),
+        .din1_im(din_q),
+        .din2_re(shift_reg_val_re),
+        .din2_im(shift_reg_val_im),
+        .dout1_re(do1_re_bfly01),
+        .dout1_im(do1_im_bfly01),
+        .dout2_re(do2_re_bfly01),
+        .dout2_im(do2_im_bfly01)
     );
 
 endmodule

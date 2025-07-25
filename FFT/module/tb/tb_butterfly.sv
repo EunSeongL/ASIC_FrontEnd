@@ -13,14 +13,21 @@ module tb_butterfly ();
     logic signed [WIDTH:0] do1_im[15:0];
     logic signed [WIDTH:0] do2_re[15:0];
     logic signed [WIDTH:0] do2_im[15:0];
+
+    logic signed [WIDTH:0] do1_re_bfly01[15:0];
+    logic signed [WIDTH:0] do1_im_bfly01[15:0];
+    logic signed [WIDTH:0] do2_re_bfly01[15:0];
+    logic signed [WIDTH:0] do2_im_bfly01[15:0];
+
     logic valid_out;
+    logic valid_out_bfly01;
     logic clk;
     logic rstn;
 
     always #5 clk = ~clk;
 
     initial begin
-        file = $fopen("/home/aedu30/practice/prac/testbench/data_fixed.txt","r");
+        file = $fopen("/home/aedu30/fft/testbench/data_fixed.txt","r");
         if (file == 0) begin
             $display("파일 열기 실패");
             $finish;
@@ -60,7 +67,7 @@ module tb_butterfly ();
     end
 
 
-    butterfly #(
+    butterfly00 #(
         .IN_WIDTH (9),   //input bit width
         .OUT_WIDTH(10),  //output bit width
         .NUM      (16),  //number of line
@@ -80,4 +87,23 @@ module tb_butterfly ();
         .valid_out(valid_out)  //valid output
     );
 
+    butterfly01 #(
+        .IN_WIDTH (10),   //input bit width
+        .OUT_WIDTH(11),  //output bit width
+        .NUM      (16),  //number of line
+        .DATA     (256)  //number of data
+    ) DUT (
+        .clk (clk),
+        .rstn(rstn),
+
+        .din_i   (do1_re),    //Re value
+        .din_q   (do1_im),    //Im value
+        .valid_in(valid_out), //valid input
+
+        .do1_re_bfly01(do1_re_bfly01),  //plus Re out
+        .do1_im_bfly01(do1_im_bfly01),  //plus Im out
+        .do2_re_bfly01(do2_re_bfly01),  //minus Re out
+        .do2_im_bfly01(do2_im_bfly01),  //minus Im out
+        .valid_out(valid_out_bfly01)  //valid output
+    );
 endmodule
