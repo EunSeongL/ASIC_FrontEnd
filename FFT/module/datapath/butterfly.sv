@@ -24,8 +24,6 @@ module butterfly #(
     logic [$clog2(COUNT):0] count;  //0~32
     logic shift_reg_cntl_write;
     logic shift_reg_cntl_read;
-    logic [$clog2(COUNT+2)-1:0] count;  //0~33
-    logic [1:0] shift_reg_cntl;  //00: 대기, 01: reg write, 10:reg_read
     logic signed [IN_WIDTH-1:0] shift_reg_val_re[0:NUM-1];
     logic signed [IN_WIDTH-1:0] shift_reg_val_im[0:NUM-1];
     logic bfly_en;  //0: 대기, 1: bfly계산
@@ -47,9 +45,6 @@ module butterfly #(
         end
     end
 
-    assign shift_reg_cntl = (count >= (COUNT/2)) ? 2'b01 : ( valid_in ? 2'b10 : 2'b00);
-    assign bfly_en = (count >= (COUNT / 2)) ? 1 : 0;
-    assign valid_out = (count >= (COUNT / 2) + 3) ? 1 : 0;
 
     always @(posedge clk, negedge rstn) begin
         if (~rstn) begin
@@ -68,17 +63,6 @@ module butterfly #(
             for (i = 0; i < NUM ; i=i+1) begin
                 low_reg_i[i] <= 0;
                 low_reg_q[i] <= 0;    
-        end else begin  //FSM으로 수정 필요
-            if (valid_in) begin
-                count <= count + 1;
-            end else begin
-                if (count > 0) begin
-                    count <= count + 1;
-                end
-            end
-
-            if (count > (COUNT + 1)) begin
-                count <= 0;
             end
         end
         else begin
@@ -89,8 +73,6 @@ module butterfly #(
             
         end
     end
-    end
-
 
     shift_reg #(
         .WIDTH(9),
@@ -109,26 +91,26 @@ module butterfly #(
         .data_out_imag(shift_reg_val_im)
     );
 
-     bfly #(
-         .SIG(1),
-         .INT(2),
-         .FLT(6)
-     ) U_BFLY_SUM_AND_MUL (
-         .clk (clk),
-         .rstn(rstn),
+    // bfly #(
+    //     .SIG(1),
+    //     .INT(2),
+    //     .FLT(6)
+    // ) U_BFLY_SUM_AND_MUL (
+    //     .clk (clk),
+    //     .rstn(rstn),
 
-         .bfly_en(bfly_en),
-         .din1_i (din_i),
-         .din1_q (din_q),
-         .din2_i (shift_reg_val_re),
-         .din2_q (shift_reg_val_im),
+    //     .bfly_en(bfly_en),
+    //     .din1_i (din_i),
+    //     .din1_q (din_q),
+    //     .din2_i (shift_reg_val_re),
+    //     .din2_q (shift_reg_val_im),
 
-         .dout1_i(do1_re),
-         .dout1_q(do1_im),
-         .dout2_i(do2_re),
-         .dout2_q(do2_im)
-     );
-/*
+    //     .dout1_i(do1_re),
+    //     .dout1_q(do1_im),
+    //     .dout2_i(do2_re),
+    //     .dout2_q(do2_im)
+    // );
+
     test_bfly#(
         .N(16),
         .IN_BIT(9),
@@ -149,6 +131,5 @@ module butterfly #(
         .dout2_i(do2_re),
         .dout2_q(do2_im)
     );
-*/
 
 endmodule
