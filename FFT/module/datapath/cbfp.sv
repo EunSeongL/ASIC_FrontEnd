@@ -43,7 +43,34 @@ module cbfp_stage0 #(
     logic signed [BW_OUT-1:0] norm_imag [0:BLOCK_SIZE-1];
     logic [4:0] norm_index [0:BLOCK_SIZE-1];
 
-    
+
+    ///////////////////////////////////////////////////////////////////////////////////
+
+    logic [1:0] valid_cnt;
+    logic valid_in_post;
+    logic valid_out_post;
+
+    always @(posedge clk or negedge rstn) begin
+        if (~rstn) begin
+            valid_cnt <= 0;
+            valid_in_post <= 0;
+            valid_out_post <= 0;
+        end
+        else begin
+            valid_in_post <= in_valid;
+            valid_out_post <= valid_out;
+            if (in_valid && !valid_in_post) begin
+                valid_cnt = valid_cnt + 1;
+            end
+            else if ((valid_cnt>0) && (valid_out) && (!valid_out_post)) begin
+                valid_cnt <= valid_cnt-1;
+            end
+        end
+    end
+
+////////////////////////////////////////////////////////////////////////////////////////
+
+
     generate
         for (genvar g = 0; g < BLOCK_SIZE; g++) begin
             mag_detect #(
@@ -78,8 +105,8 @@ module cbfp_stage0 #(
         end
     endgenerate
 
-    parameter IDLE = 0, COLLECT = 1, PROCESS = 2, OUTPUT = 3;
-    logic [1:0] c_state, n_state;
+    parameter IDLE = 0, COLLECT = 1, PROCESS = 2, OUT_COL = 3, OUTPUT = 4;
+    logic [2:0] c_state, n_state;
 
     always @(posedge clk or negedge rstn) begin
         if (!rstn) begin
@@ -100,9 +127,13 @@ module cbfp_stage0 #(
             end
             PROCESS: begin
                 if(shift_val_loaded) begin
-                    n_state = OUTPUT;
+                    n_state = OUT_COL;
                 end
             end
+            OUT_COL: begin
+                n_state = (output_cnt == 2'b11) ? COLLECT : OUT_COL;  //process -> collect 07-27 jm
+            end
+
             OUTPUT: begin
                 n_state = (output_cnt == 2'b11) ? IDLE : OUTPUT;
             end
@@ -114,7 +145,7 @@ module cbfp_stage0 #(
     always_ff @(posedge clk or negedge rstn) begin
         if (!rstn) begin
             input_cnt <= 0;
-        end else if (c_state == COLLECT && in_valid) begin
+        end else if ((c_state == COLLECT || c_state == OUT_COL || c_state == PROCESS ) && in_valid) begin //////////////////process 추가 07-27 jm
             for (i = 0; i < BATCH_SIZE; i++) begin
                 automatic int idx = input_cnt * BATCH_SIZE + i;
                 real_buf[idx] <= real_in[i];
@@ -147,8 +178,8 @@ module cbfp_stage0 #(
         end
         if (c_state == PROCESS && shift_val_loaded) begin
             for (j = 0; j < BLOCK_SIZE; j = j + 1) begin
-                temp_r = (shift_val > 12) ? (real_buf[j]  <<<  shift_val) : (real_buf[j] >>> (-12+shift_val));
-                temp_i = (shift_val > 12) ? (imag_buf[j]  <<<  shift_val) : (imag_buf[j] >>> (-12+shift_val));
+                temp_r = (shift_val > 12) ? (real_buf[j]  <<<  shift_val)>>>12 : (real_buf[j] >>> (12-shift_val));
+                temp_i = (shift_val > 12) ? (imag_buf[j]  <<<  shift_val)>>>12 : (imag_buf[j] >>> (12-shift_val));
 
                 norm_real[j]  <= temp_r[BW_OUT-1:0];
                 norm_imag[j]  <= temp_i[BW_OUT-1:0];
@@ -162,8 +193,11 @@ module cbfp_stage0 #(
         if (!rstn) begin
             output_cnt <= 0;
             valid_out  <= 0;
-        end else if (c_state == OUTPUT) begin
+        end else if (c_state == OUTPUT || c_state == OUT_COL) begin
+            if (valid_cnt >0) begin
             valid_out <= 1;
+         end
+
             for (k = 0; k < BATCH_SIZE; k = k + 1) begin
                 automatic int idx_o = output_cnt * BATCH_SIZE + k;
                 real_out[k]  <= norm_real[idx_o];
@@ -171,7 +205,7 @@ module cbfp_stage0 #(
                 index_out[k] <= norm_index[idx_o];
             end
             output_cnt <= output_cnt + 1;
-        end else if (c_state == (IDLE || COLLECT)) begin
+        end else if (c_state==IDLE || c_state == COLLECT || c_state == PROCESS) begin
             valid_out <= 0;
             output_cnt <= 0;
         end
