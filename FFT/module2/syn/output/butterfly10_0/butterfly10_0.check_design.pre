@@ -1,0 +1,31 @@
+ 
+****************************************
+check_design summary:
+Version:     V-2023.12-SP5-4
+Date:        Sat Aug  2 17:32:50 2025
+****************************************
+
+                   Name                                            Total
+--------------------------------------------------------------------------------
+Cells                                                               9
+    Cells do not drive (LINT-1)                                     3
+    Connected to power or ground (LINT-32)                          4
+    Nets connected to multiple pins on same cell (LINT-33)          2
+--------------------------------------------------------------------------------
+
+Warning: In design 'butterfly10', cell 'C1217' does not drive any nets. (LINT-1)
+Warning: In design 'test_bfly10_N16_IN_BIT11_OUT_BIT12', cell 'B_4' does not drive any nets. (LINT-1)
+Warning: In design 'test_bfly10_N16_IN_BIT11_OUT_BIT12', cell 'B_5' does not drive any nets. (LINT-1)
+Warning: In design 'butterfly10', a pin on submodule 'U_SHIFT_REG_256' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'write' is connected to logic 1. 
+Warning: In design 'butterfly10', a pin on submodule 'U_SHIFT_REG_256' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'read' is connected to logic 1. 
+Warning: In design 'butterfly10', a pin on submodule 'U_SHIFT_REG_HIGH' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'write' is connected to logic 1. 
+Warning: In design 'butterfly10', a pin on submodule 'U_SHIFT_REG_HIGH' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'read' is connected to logic 1. 
+Warning: In design 'butterfly10', the same net is connected to more than one pin on submodule 'U_SHIFT_REG_256'. (LINT-33)
+   Net '*Logic1*' is connected to pins 'write', 'read''.
+Warning: In design 'butterfly10', the same net is connected to more than one pin on submodule 'U_SHIFT_REG_HIGH'. (LINT-33)
+   Net '*Logic1*' is connected to pins 'write', 'read''.
+1

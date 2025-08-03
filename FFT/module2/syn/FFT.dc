@@ -1,0 +1,1 @@
+dc_shell -f FFT.tcl | tee run.log

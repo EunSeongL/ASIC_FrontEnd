@@ -1,0 +1,85 @@
+Information: Updating design information... (UID-85)
+Warning: Design 'butterfly' contains 2 high-fanout nets. A fanout number of 1000 will be used for delay calculations involving these nets. (TIM-134)
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -max_paths 1
+Design : butterfly
+Version: V-2023.12-SP5-4
+Date   : Sat Aug  2 20:12:45 2025
+****************************************
+
+ # A fanout number of 1000 was used for high fanout net computations.
+
+Operating Conditions: TT_0P80V_0P00V_0P00V_0P00V_25C   Library: GF22FDX_SC7P5T_116CPP_BASE_CSC20L_TT_0P80V_0P00V_0P00V_0P00V_25C
+Wire Load Model Mode: enclosed
+
+  Startpoint: U_SHIFT_REG_256/data_out_real_reg_9__0_
+              (rising edge-triggered flip-flop clocked by cnt_clk)
+  Endpoint: U_SHIFT_REG_HIGH/shift_din_real_reg_0__9__8_
+            (rising edge-triggered flip-flop clocked by cnt_clk)
+  Path Group: cnt_clk
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock cnt_clk (rise edge)                               0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  U_SHIFT_REG_256/data_out_real_reg_9__0_/CLK (SC7P5T_DFFRQX4_S_CSC20L)
+                                                          0.00 #     0.00 r
+  U_SHIFT_REG_256/data_out_real_reg_9__0_/Q (SC7P5T_DFFRQX4_S_CSC20L)
+                                                         50.42      50.42 f
+  U_SHIFT_REG_256/data_out_real[54] (shift_reg_WIDTH9_DELAY_LENGTH15)
+                                                          0.00      50.42 f
+  U_TEST_BFLY/din1_i[54] (test_bfly_N16_IN_BIT9_OUT_BIT10)
+                                                          0.00      50.42 f
+  U_TEST_BFLY/U2415/Z (SC7P5T_NR2X3_CSC20L)              12.74      63.16 r
+  U_TEST_BFLY/U2414/Z (SC7P5T_INVX2_CSC20L)               8.37      71.53 f
+  U_TEST_BFLY/U641/Z (SC7P5T_AO21X2_CSC20L)              24.56      96.08 f
+  U_TEST_BFLY/U642/Z (SC7P5T_INVX2_CSC20L)                8.30     104.39 r
+  U_TEST_BFLY/U648/Z (SC7P5T_INVX2_CSC20L)                6.25     110.64 f
+  U_TEST_BFLY/U719/Z (SC7P5T_AO21X2_CSC20L)              23.91     134.56 f
+  U_TEST_BFLY/U720/Z (SC7P5T_INVX2_CSC20L)                7.39     141.95 r
+  U_TEST_BFLY/U3625/Z (SC7P5T_INVX1_CSC20L)               7.77     149.72 f
+  U_TEST_BFLY/U772/Z (SC7P5T_AO21X2_CSC20L)              25.01     174.73 f
+  U_TEST_BFLY/U773/Z (SC7P5T_INVX2_CSC20L)                8.30     183.03 r
+  U_TEST_BFLY/U680/Z (SC7P5T_INVX2_CSC20L)                6.25     189.29 f
+  U_TEST_BFLY/U669/Z (SC7P5T_AO21X2_CSC20L)              23.91     213.20 f
+  U_TEST_BFLY/U670/Z (SC7P5T_INVX2_CSC20L)                7.39     220.59 r
+  U_TEST_BFLY/U3811/Z (SC7P5T_INVX1_CSC20L)               7.77     228.37 f
+  U_TEST_BFLY/U756/Z (SC7P5T_AO21X2_CSC20L)              25.01     253.38 f
+  U_TEST_BFLY/U757/Z (SC7P5T_INVX2_CSC20L)                8.30     261.68 r
+  U_TEST_BFLY/U767/Z (SC7P5T_INVX2_CSC20L)                6.25     267.93 f
+  U_TEST_BFLY/U2734/Z (SC7P5T_AO21X2_CSC20L)             23.91     291.85 f
+  U_TEST_BFLY/U2735/Z (SC7P5T_INVX2_CSC20L)               8.37     300.22 r
+  U_TEST_BFLY/U163/Z (SC7P5T_OA21X2_CSC20L)              24.06     324.28 r
+  U_TEST_BFLY/U164/Z (SC7P5T_INVX2_CSC20L)                6.93     331.22 f
+  U_TEST_BFLY/U3978/Z (SC7P5T_INVX1_CSC20L)               9.03     340.25 r
+  U_TEST_BFLY/U3979/Z (SC7P5T_OAI22X1_CSC20L)            16.49     356.73 f
+  U_TEST_BFLY/U585/Z (SC7P5T_AO22X2_CSC20L)              28.84     385.57 f
+  U_TEST_BFLY/U586/Z (SC7P5T_INVX2_CSC20L)                6.55     392.12 r
+  U_TEST_BFLY/dout2_i[68] (test_bfly_N16_IN_BIT9_OUT_BIT10)
+                                                          0.00     392.12 r
+  U_SHIFT_REG_HIGH/data_in_real[68] (shift_reg_WIDTH10_DELAY_LENGTH15)
+                                                          0.00     392.12 r
+  U_SHIFT_REG_HIGH/shift_din_real_reg_0__9__8_/D (SC7P5T_SDFFRQX4_CSC20L)
+                                                          0.00     392.12 r
+  data arrival time                                                392.12
+
+  clock cnt_clk (rise edge)                             700.00     700.00
+  clock network delay (ideal)                             0.00     700.00
+  clock uncertainty                                     -50.00     650.00
+  U_SHIFT_REG_HIGH/shift_din_real_reg_0__9__8_/CLK (SC7P5T_SDFFRQX4_CSC20L)
+                                                          0.00     650.00 r
+  library setup time                                    -51.39     598.61
+  data required time                                               598.61
+  --------------------------------------------------------------------------
+  data required time                                               598.61
+  data arrival time                                               -392.12
+  --------------------------------------------------------------------------
+  slack (MET)                                                      206.49
+
+
+1

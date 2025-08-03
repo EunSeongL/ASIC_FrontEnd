@@ -1,0 +1,29 @@
+ 
+****************************************
+check_design summary:
+Version:     V-2023.12-SP5-4
+Date:        Sat Aug  2 20:12:46 2025
+****************************************
+
+                   Name                                            Total
+--------------------------------------------------------------------------------
+Inputs/Outputs                                                      8
+    Unconnected ports (LINT-28)                                     8
+
+Cells                                                               4
+    Hier pins without driver and load (LINT-60)                     4
+--------------------------------------------------------------------------------
+
+Warning: In design 'shift_reg_WIDTH9_DELAY_LENGTH15', port 'write' is not connected to any nets. (LINT-28)
+Warning: In design 'shift_reg_WIDTH9_DELAY_LENGTH15', port 'read' is not connected to any nets. (LINT-28)
+Warning: In design 'shift_reg_WIDTH9_DELAY_LENGTH15', port 'full' is not connected to any nets. (LINT-28)
+Warning: In design 'shift_reg_WIDTH9_DELAY_LENGTH15', port 'empty' is not connected to any nets. (LINT-28)
+Warning: In design 'shift_reg_WIDTH10_DELAY_LENGTH15', port 'write' is not connected to any nets. (LINT-28)
+Warning: In design 'shift_reg_WIDTH10_DELAY_LENGTH15', port 'read' is not connected to any nets. (LINT-28)
+Warning: In design 'shift_reg_WIDTH10_DELAY_LENGTH15', port 'full' is not connected to any nets. (LINT-28)
+Warning: In design 'shift_reg_WIDTH10_DELAY_LENGTH15', port 'empty' is not connected to any nets. (LINT-28)
+Warning: In design 'butterfly', input pin 'write' of hierarchical cell 'U_SHIFT_REG_256' has no internal loads and is not connected to any nets. (LINT-60)
+Warning: In design 'butterfly', input pin 'read' of hierarchical cell 'U_SHIFT_REG_256' has no internal loads and is not connected to any nets. (LINT-60)
+Warning: In design 'butterfly', input pin 'write' of hierarchical cell 'U_SHIFT_REG_HIGH' has no internal loads and is not connected to any nets. (LINT-60)
+Warning: In design 'butterfly', input pin 'read' of hierarchical cell 'U_SHIFT_REG_HIGH' has no internal loads and is not connected to any nets. (LINT-60)
+1

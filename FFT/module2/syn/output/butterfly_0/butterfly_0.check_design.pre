@@ -1,0 +1,36 @@
+ 
+****************************************
+check_design summary:
+Version:     V-2023.12-SP5-4
+Date:        Sat Aug  2 20:11:26 2025
+****************************************
+
+                   Name                                            Total
+--------------------------------------------------------------------------------
+Cells                                                              14
+    Cells do not drive (LINT-1)                                     8
+    Connected to power or ground (LINT-32)                          4
+    Nets connected to multiple pins on same cell (LINT-33)          2
+--------------------------------------------------------------------------------
+
+Warning: In design 'butterfly', cell 'C1064' does not drive any nets. (LINT-1)
+Warning: In design 'shift_reg_WIDTH9_DELAY_LENGTH15', cell 'C18583' does not drive any nets. (LINT-1)
+Warning: In design 'shift_reg_WIDTH9_DELAY_LENGTH15', cell 'C18584' does not drive any nets. (LINT-1)
+Warning: In design 'test_bfly_N16_IN_BIT9_OUT_BIT10', cell 'C814' does not drive any nets. (LINT-1)
+Warning: In design 'test_bfly_N16_IN_BIT9_OUT_BIT10', cell 'B_5' does not drive any nets. (LINT-1)
+Warning: In design 'test_bfly_N16_IN_BIT9_OUT_BIT10', cell 'B_6' does not drive any nets. (LINT-1)
+Warning: In design 'shift_reg_WIDTH10_DELAY_LENGTH15', cell 'C20631' does not drive any nets. (LINT-1)
+Warning: In design 'shift_reg_WIDTH10_DELAY_LENGTH15', cell 'C20632' does not drive any nets. (LINT-1)
+Warning: In design 'butterfly', a pin on submodule 'U_SHIFT_REG_256' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'write' is connected to logic 1. 
+Warning: In design 'butterfly', a pin on submodule 'U_SHIFT_REG_256' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'read' is connected to logic 1. 
+Warning: In design 'butterfly', a pin on submodule 'U_SHIFT_REG_HIGH' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'write' is connected to logic 1. 
+Warning: In design 'butterfly', a pin on submodule 'U_SHIFT_REG_HIGH' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'read' is connected to logic 1. 
+Warning: In design 'butterfly', the same net is connected to more than one pin on submodule 'U_SHIFT_REG_256'. (LINT-33)
+   Net '*Logic1*' is connected to pins 'write', 'read''.
+Warning: In design 'butterfly', the same net is connected to more than one pin on submodule 'U_SHIFT_REG_HIGH'. (LINT-33)
+   Net '*Logic1*' is connected to pins 'write', 'read''.
+1

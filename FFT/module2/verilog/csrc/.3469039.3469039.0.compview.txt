@@ -1,0 +1,7 @@
+Command exited with non-zero status 255
+{"vcs1":{"timestamp_begin":1754138245.045088721, "rt":0.10, "ut":0.04, "st":0.03}}
+{"SNPS_VCS_INTERNAL_ROOT_START_TIME": 1754138244.666319086}
+{"VCS_COMP_START_TIME": 1754138244.666319086}
+{"VCS_COMP_END_TIME": 1754138245.199426141}
+{"VCS_USER_OPTIONS": "-full64 -kdb -debug_access+all -sverilog -v /pdk/GF22FDX_SC7P5T_116CPP_BASE_CSC20L_FDK_RELV02R80/verilog/GF22FDX_SC7P5T_116CPP_BASE_CSC20L.v -v /pdk/GF22FDX_SC7P5T_116CPP_BASE_CSC20L_FDK_RELV02R80/verilog/prim.v -f fft_filelist"}
+{"vcs1": {"peak_mem": 446684}}

@@ -1,0 +1,3060 @@
+Start to rebuild KDB and simv binary
+
+                         Chronologic VCS (TM)
+       Version W-2024.09-SP1_Full64 -- Sun Aug  3 00:48:02 2025
+
+                    Copyright (c) 1991 - 2024 Synopsys, Inc.
+   This software and the associated documentation are proprietary to Synopsys,
+ Inc. This software may only be used in accordance with the terms and conditions
+ of a written license agreement with Synopsys, Inc. All other use, reproduction,
+   or distribution of this software is strictly prohibited.  Licensed Products
+     communicate with Synopsys servers for the purpose of providing software
+    updates, detecting software piracy and verifying that customers are using
+    Licensed Products in conformity with the applicable License Key for such
+  Licensed Products. Synopsys will use information gathered in connection with
+    this process to deliver software updates and pursue software pirates and
+                                   infringers.
+
+ Inclusivity & Diversity - Visit SolvNetPlus to read the "Synopsys Statement on
+            Inc
+lusivity and Diversity" (Refer to article 000036315 at
+                        https://solvnetplus.synopsys.com)
+
+Warning : License for product VCS-BASE-COMPILE will expire within 12 days, on: 14-aug-2025.
+
+If you would like to temporarily disable this message, set 
+ the VCS_LIC_EXPIRE_WARNING environment variable to the number of days
+before expiration that you want this message to start (the minimum is 0).
+Parsing design file './FFT_0.v'
+
+Parsing design file './tb_fft_gate.sv'
+
+Parsing library file '/pdk/GF22FDX_SC7P5T_116CPP_BASE_CSC20L_FDK_RELV02R80/verilog/GF22FDX_SC7P5T_116CPP_BASE_CSC20L.v'
+
+Parsing library file '/pdk/GF22FDX_SC7P5T_116CPP_BASE_CSC20L_FDK_RELV02R80/verilog/prim.v'
+
+Top Level Modules:
+       tb_fft_gate
+
+TimeScale is 1 ps / 1 fs
+
+
+Warning-[TFIPC] Too few instance port connections
+./FFT_0.v, 33242
+butterfly, "shift_reg_WIDTH9_DELAY_LENGTH15 U_SHIFT_REG_256( .clk (clk),  .rstn (rstn),  .write (net1009202),  .read (net1009203),  .data_in_real (din_i),  .data_in_imag (din_q),  .data_out_real (shift_reg_val_re),  .data_out_imag (shift_reg_val_im));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+./FFT_0.v, 33251
+butterfly, "shift_reg_WIDTH10_DELAY_LENGTH15 U_SHIFT_REG_HIGH( .clk (clk),  .rstn (rstn),  .write (net1009200),  .read (net1009201),  .data_in_real (o_bfly_high_re),  .data_in_imag (o_bfly_high_im),  .data_out_real (reg_high_re),  .data_out_imag (reg_high_im));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port co
+nnections
+./FFT_0.v, 53847
+butterfly01, "shift_reg_WIDTH10_DELAY_LENGTH7 U_SHIFT_REG_128( .clk (clk),  .rstn (rstn),  .write (net1009198),  .read (net1009199),  .data_in_real (din_i),  .data_in_imag (din_q),  .data_out_real (shift_reg_val_re),  .data_out_imag (shift_reg_val_im));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+./FFT_0.v, 53855
+butterfly01, "shift_reg_WIDTH11_DELAY_LENGTH7 U_SHIFT_bfly01( .clk (clk),  .rstn (rstn),  .write (net1009196),  .read (net1009197),  .data_in_real (o_bf01_high_re),  .data_in_imag (o_bf01_high_im),  .data_out_real (shift_bfly01_re),  .data_out_imag (shift_bfly01_im));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+./FFT_0.v, 86757
+butte
+rfly02, "shift_reg_WIDTH13_DELAY_LENGTH3 U_SHIFT_REG_64( .clk (clk),  .rstn (rstn),  .write (net1009194),  .read (net1009195),  .data_in_real (din_i),  .data_in_imag (din_q),  .data_out_real (shift_reg_val_re),  .data_out_imag (shift_reg_val_im));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+./FFT_0.v, 86781
+butterfly02, "shift_reg_WIDTH14_DELAY_LENGTH3 U_SHIFT_bfly02( .clk (clk),  .rstn (rstn),  .write (net1009192),  .read (net1009193),  .data_in_real (o_bf02_high_re),  .data_in_imag (o_bf02_high_im),  .data_out_real (shift_bfly02_re),  .data_out_imag (shift_bfly02_im));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+./FFT_0.v, 91564
+butterfly02, "SC7P5T_FAX2_A_CSC20L U45
+4( .A (n3999),  .B (n3998),  .CI (n3997),  .CO (n25000));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+./FFT_0.v, 91701
+butterfly02, "SC7P5T_FAX2_A_CSC20L U528( .A (n3440),  .B (n3439),  .CI (n3438),  .CO (n251));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+./FFT_0.v, 92033
+butterfly02, "SC7P5T_FAX2_A_CSC20L U743( .A (n4206),  .B (n4205),  .CI (n4204),  .CO (n249));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+./FFT_0.v, 92066
+butterfly02, "SC7P5T_FAX2_A_CSC20L U761( .A (n4206),  .B (n4205),  .CI (n42
+04),  .S (n4168));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+./FFT_0.v, 92110
+butterfly02, "SC7P5T_FAX2_A_CSC20L U785( .A (n3999),  .B (n3998),  .CI (n3997),  .S (n4162));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+./FFT_0.v, 92334
+butterfly02, "SC7P5T_FAX2_A_CSC20L U914( .A (n3440),  .B (n3439),  .CI (n3438),  .S (n3516));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+
+Warning-[TFIPC] Too few instance port connections
+./FFT_0.v, 186918
+butterfly10, "shift_reg_WIDTH11_DELAY_LENGTH1 U_SHIFT_REG_256( .clk (clk),  .rstn (rstn),  .write (net1009126),  .read (net1009127),  .data_in_real (din_i),  .data_in_imag (din_q),  .data_out_real (shift_reg_val_re),  .data_out_imag (shift_reg_val_im));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+./FFT_0.v, 186926
+butterfly10, "shift_reg_WIDTH12_DELAY_LENGTH1 U_SHIFT_REG_HIGH( .clk (clk),  .rstn (rstn),  .write (net1009124),  .read (net1009125),  .data_in_real (o_bfly10_high_re),  .data_in_imag (o_bfly10_high_im),  .data_out_real (shifted_re),  .data_out_imag (shifted_im));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance 
+port connections
+./FFT_0.v, 328009
+cbfp_stage2, "shift_reg_WIDTH16_DELAY_LENGTH26 U_SHIFT( .clk (clk),  .rstn (rstn),  .write (net1009122),  .read (net1009123),  .data_in_real (real_in),  .data_in_imag (imag_in),  .data_out_real (real_in_shift),  .data_out_imag (imag_in_shift));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+./FFT_0.v, 329975
+cbfp_stage2, "SC7P5T_FAX1_A_CSC20L intadd_604_U3( .A (ind1_reg[258]),  .B (ind0_reg[128]),  .CI (intadd_604_n3),  .S (N141665));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+
+Warning-[TFIPC] Too few instance port connections
+./FFT_0.v, 369308
+module2, "butterfly20 U_BF20( .clk (clk),  .rstn (rstn),  .din_i (din_i),  .din_q (din_q),  .valid_in (net1009342),  .do_re (o_bf20_re),  .do_im (o_bf20_im));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+./FFT_0.v, 369310
+module2, "butterfly21 U_BF21( .clk (clk),  .rstn (rstn),  .din_i (o_bf20_re),  .din_q (o_bf20_im),  .valid_in (net1009341),  .do1_re (o_bf21_re),  .do1_im (o_bf21_im));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+./FFT_0.v, 369313
+module2, "butterfly22 U_BF22( .clk (clk),  .rstn (rstn),  .din_i (o_bf21_re),  .din_q (o_bf21_im),  .valid_in (net1009340),  .do1_re (o_bf22_re),  .do1_im (
+o_bf22_im));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 33243
+  Implicit wire 'net1009202' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 33243
+  Implicit wire 'net1009203' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 33252
+  Implicit wire 'net1009200' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 33252
+  Implicit wire 'net1009201' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 53848
+  Implicit wire 'net1009198' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 53848
+  Implicit wire 'net1009199' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 53856
+  Implicit wire 'net1009196' does not h
+ave any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 53856
+  Implicit wire 'net1009197' does not have any driver, please make sure this 
+  is intended.
+
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 86758
+  Implicit wire 'net1009194' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 86758
+  Implicit wire 'net1009195' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 86782
+  Implicit wire 'net1009192' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 86782
+  Implicit wire 'net1009193' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 86793
+  Implicit wire 'net1009191' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 86796
+  Implicit wire 'net1009190' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 86799
+  Implicit wire 'net1009189' does not h
+ave any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 86801
+  Implicit wire 'net1009188' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 86803
+  Implicit wire 'net1009186' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 86804
+  Implicit wire 'net1009187' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 86806
+  Implicit wire 'net1009184' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 86807
+  Implicit wire 'net1009185' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 86809
+  Implicit wire 'net1009183' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+.
+/FFT_0.v, 86812
+  Implicit wire 'net1009182' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 86814
+  Implicit wire 'net1009180' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 86815
+  Implicit wire 'net1009181' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 86817
+  Implicit wire 'net1009178' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 86818
+  Implicit wire 'net1009179' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 86820
+  Implicit wire 'net1009176' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 86821
+  Implicit wire 'net1009177' does not have any driver, please make sure this 
+  is 
+intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 86823
+  Implicit wire 'net1009174' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 86824
+  Implicit wire 'net1009175' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 86826
+  Implicit wire 'net1009171' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 86826
+  Implicit wire 'net1009172' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 86827
+  Implicit wire 'net1009173' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 86829
+  Implicit wire 'net1009168' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 86830
+  Implicit wire 'net1009169'
+ does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 86830
+  Implicit wire 'net1009170' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 86832
+  Implicit wire 'net1009167' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 86835
+  Implicit wire 'net1009166' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 86838
+  Implicit wire 'net1009164' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 86839
+  Implicit wire 'net1009165' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 86841
+  Implicit wire 'net1009162' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has
+ no fanin
+./FFT_0.v, 86842
+  Implicit wire 'net1009163' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 86844
+  Implicit wire 'net1009160' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 86845
+  Implicit wire 'net1009161' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 86848
+  Implicit wire 'net1009158' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 86849
+  Implicit wire 'net1009159' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 86852
+  Implicit wire 'net1009155' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 86853
+  Implicit wire 'net1009156' does not have any driver, please make sure 
+this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 86853
+  Implicit wire 'net1009157' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 86855
+  Implicit wire 'net1009152' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 86856
+  Implicit wire 'net1009153' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 86856
+  Implicit wire 'net1009154' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 86859
+  Implicit wire 'net1009150' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 86859
+  Implicit wire 'net1009151' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 86862
+  Implicit wire '
+net1009148' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 86862
+  Implicit wire 'net1009149' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 86866
+  Implicit wire 'net1009145' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 86866
+  Implicit wire 'net1009146' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 86867
+  Implicit wire 'net1009147' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 86870
+  Implicit wire 'net1009142' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 86870
+  Implicit wire 'net1009143' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implic
+it wire has no fanin
+./FFT_0.v, 86871
+  Implicit wire 'net1009144' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 86873
+  Implicit wire 'net1009139' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 86874
+  Implicit wire 'net1009140' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 86874
+  Implicit wire 'net1009141' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 86877
+  Implicit wire 'net1009136' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 86878
+  Implicit wire 'net1009137' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 86878
+  Implicit wire 'net1009138' does not have any driver, please
+ make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 86880
+  Implicit wire 'net1009132' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 86881
+  Implicit wire 'net1009133' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 86881
+  Implicit wire 'net1009134' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 86881
+  Implicit wire 'net1009135' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 86883
+  Implicit wire 'net1009128' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 86884
+  Implicit wire 'net1009129' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 86884
+  Impl
+icit wire 'net1009130' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 86884
+  Implicit wire 'net1009131' does not have any driver, please make sure this 
+  is intended.
+
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 186919
+  Implicit wire 'net1009126' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 186919
+  Implicit wire 'net1009127' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 186927
+  Implicit wire 'net1009124' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 186927
+  Implicit wire 'net1009125' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 214051
+  Implicit wire 'net1009121' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 214056
+  Implicit wire 'net1009119' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 214057
+  Implicit wire 'net1009120' doe
+s not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 214063
+  Implicit wire 'net1009118' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 214068
+  Implicit wire 'net1009116' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 214069
+  Implicit wire 'net1009117' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 214075
+  Implicit wire 'net1009115' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 214080
+  Implicit wire 'net1009113' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 214081
+  Implicit wire 'net1009114' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire h
+as no fanin
+./FFT_0.v, 214087
+  Implicit wire 'net1009112' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 214092
+  Implicit wire 'net1009110' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 214093
+  Implicit wire 'net1009111' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 214099
+  Implicit wire 'net1009108' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 214099
+  Implicit wire 'net1009109' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 214104
+  Implicit wire 'net1009105' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 214105
+  Implicit wire 'net1009106' does not have any driver, please m
+ake sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 214105
+  Implicit wire 'net1009107' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 214111
+  Implicit wire 'net1009103' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 214111
+  Implicit wire 'net1009104' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 214116
+  Implicit wire 'net1009100' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 214117
+  Implicit wire 'net1009101' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 214117
+  Implicit wire 'net1009102' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 214122
+ 
+ Implicit wire 'net1009099' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 214128
+  Implicit wire 'net1009097' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 214129
+  Implicit wire 'net1009098' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 214134
+  Implicit wire 'net1009096' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 214140
+  Implicit wire 'net1009094' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 214140
+  Implicit wire 'net1009095' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 214147
+  Implicit wire 'net1009092' does not have any driver, please make sure this 
+  is intended.
+
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 214148
+  Implicit wire 'net1009093' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 214153
+  Implicit wire 'net1009089' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 214153
+  Implicit wire 'net1009090' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 214154
+  Implicit wire 'net1009091' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 214159
+  Implicit wire 'net1009087' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 214160
+  Implicit wire 'net1009088' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 214165
+  Implicit wire 'net1009084' doe
+s not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 214165
+  Implicit wire 'net1009085' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 214166
+  Implicit wire 'net1009086' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 214172
+  Implicit wire 'net1009082' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 214173
+  Implicit wire 'net1009083' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 214178
+  Implicit wire 'net1009079' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 214178
+  Implicit wire 'net1009080' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire h
+as no fanin
+./FFT_0.v, 214179
+  Implicit wire 'net1009081' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 214185
+  Implicit wire 'net1009077' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 214186
+  Implicit wire 'net1009078' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 214191
+  Implicit wire 'net1009074' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 214191
+  Implicit wire 'net1009075' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 214192
+  Implicit wire 'net1009076' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 214198
+  Implicit wire 'net1009071' does not have any driver, please m
+ake sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 214199
+  Implicit wire 'net1009072' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 214199
+  Implicit wire 'net1009073' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 214204
+  Implicit wire 'net1009067' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 214204
+  Implicit wire 'net1009068' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 214205
+  Implicit wire 'net1009069' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 214205
+  Implicit wire 'net1009070' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 214211
+ 
+ Implicit wire 'net1009064' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 214212
+  Implicit wire 'net1009065' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 214212
+  Implicit wire 'net1009066' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 214218
+  Implicit wire 'net1009060' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 214218
+  Implicit wire 'net1009061' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 214219
+  Implicit wire 'net1009062' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 214219
+  Implicit wire 'net1009063' does not have any driver, please make sure this 
+  is intended.
+
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 264615
+  Implicit wire 'net1009343' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 264615
+  Implicit wire 'net1009344' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 264615
+  Implicit wire 'net1009345' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 264615
+  Implicit wire 'net1009346' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 264615
+  Implicit wire 'net1009347' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 264615
+  Implicit wire 'net1009348' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 264616
+  Implicit wire 'net1009349' doe
+s not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 264616
+  Implicit wire 'net1009350' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 264616
+  Implicit wire 'net1009351' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 264616
+  Implicit wire 'net1009352' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 264617
+  Implicit wire 'net1009353' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 264617
+  Implicit wire 'net1009354' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 264617
+  Implicit wire 'net1009355' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire h
+as no fanin
+./FFT_0.v, 264617
+  Implicit wire 'net1009356' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 264618
+  Implicit wire 'net1009357' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 264618
+  Implicit wire 'net1009358' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 264618
+  Implicit wire 'net1009359' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 264619
+  Implicit wire 'net1009360' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 264619
+  Implicit wire 'net1009361' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 264619
+  Implicit wire 'net1009362' does not have any driver, please m
+ake sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 264619
+  Implicit wire 'net1009363' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 264620
+  Implicit wire 'net1009364' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 264620
+  Implicit wire 'net1009365' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 264620
+  Implicit wire 'net1009366' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 264620
+  Implicit wire 'net1009367' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 264620
+  Implicit wire 'net1009368' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 264620
+ 
+ Implicit wire 'net1009369' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 264621
+  Implicit wire 'net1009370' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 328010
+  Implicit wire 'net1009122' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 328010
+  Implicit wire 'net1009123' does not have any driver, please make sure this 
+  is intended.
+
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 369309
+  Implicit wire 'net1009342' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 369311
+  Implicit wire 'net1009341' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 369314
+  Implicit wire 'net1009340' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 369317
+  Implicit wire 'net1009204' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 369318
+  Implicit wire 'net1009205' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 369318
+  Implicit wire 'net1009206' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 369318
+  Implicit wire 'net1009207' doe
+s not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 369318
+  Implicit wire 'net1009208' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 369318
+  Implicit wire 'net1009209' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 369318
+  Implicit wire 'net1009210' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 369319
+  Implicit wire 'net1009211' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 369319
+  Implicit wire 'net1009212' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 369319
+  Implicit wire 'net1009213' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire h
+as no fanin
+./FFT_0.v, 369319
+  Implicit wire 'net1009214' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 369319
+  Implicit wire 'net1009215' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 369319
+  Implicit wire 'net1009216' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 369320
+  Implicit wire 'net1009217' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 369320
+  Implicit wire 'net1009218' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 369320
+  Implicit wire 'net1009219' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 369320
+  Implicit wire 'net1009220' does not have any driver, please m
+ake sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 369320
+  Implicit wire 'net1009221' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 369320
+  Implicit wire 'net1009222' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 369321
+  Implicit wire 'net1009223' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 369321
+  Implicit wire 'net1009224' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 369321
+  Implicit wire 'net1009225' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 369321
+  Implicit wire 'net1009226' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 369321
+ 
+ Implicit wire 'net1009227' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 369321
+  Implicit wire 'net1009228' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 369322
+  Implicit wire 'net1009229' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 369322
+  Implicit wire 'net1009230' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 369322
+  Implicit wire 'net1009231' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 369322
+  Implicit wire 'net1009232' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 369322
+  Implicit wire 'net1009233' does not have any driver, please make sure this 
+  is intended.
+
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 369322
+  Implicit wire 'net1009234' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 369323
+  Implicit wire 'net1009235' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 369323
+  Implicit wire 'net1009236' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 369323
+  Implicit wire 'net1009237' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 369323
+  Implicit wire 'net1009238' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 369323
+  Implicit wire 'net1009239' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 369323
+  Implicit wire 'net1009240' doe
+s not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 369324
+  Implicit wire 'net1009241' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 369324
+  Implicit wire 'net1009242' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 369324
+  Implicit wire 'net1009243' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 369324
+  Implicit wire 'net1009244' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 369324
+  Implicit wire 'net1009245' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 369324
+  Implicit wire 'net1009246' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire h
+as no fanin
+./FFT_0.v, 369325
+  Implicit wire 'net1009247' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 369325
+  Implicit wire 'net1009248' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 369325
+  Implicit wire 'net1009249' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 369325
+  Implicit wire 'net1009250' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 369325
+  Implicit wire 'net1009251' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 369325
+  Implicit wire 'net1009252' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 369326
+  Implicit wire 'net1009253' does not have any driver, please m
+ake sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 369326
+  Implicit wire 'net1009254' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 369326
+  Implicit wire 'net1009255' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 369326
+  Implicit wire 'net1009256' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 369326
+  Implicit wire 'net1009257' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 369326
+  Implicit wire 'net1009258' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 369327
+  Implicit wire 'net1009259' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 369327
+ 
+ Implicit wire 'net1009260' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 369327
+  Implicit wire 'net1009261' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 369327
+  Implicit wire 'net1009262' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 369327
+  Implicit wire 'net1009263' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 369327
+  Implicit wire 'net1009264' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 369328
+  Implicit wire 'net1009265' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 369328
+  Implicit wire 'net1009266' does not have any driver, please make sure this 
+  is intended.
+
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 369328
+  Implicit wire 'net1009267' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 369328
+  Implicit wire 'net1009268' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 369328
+  Implicit wire 'net1009269' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 369328
+  Implicit wire 'net1009270' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 369329
+  Implicit wire 'net1009271' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 369329
+  Implicit wire 'net1009272' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 369329
+  Implicit wire 'net1009273' doe
+s not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 369329
+  Implicit wire 'net1009274' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 369331
+  Implicit wire 'net1009275' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 369331
+  Implicit wire 'net1009276' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 369331
+  Implicit wire 'net1009277' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 369331
+  Implicit wire 'net1009278' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 369331
+  Implicit wire 'net1009279' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire h
+as no fanin
+./FFT_0.v, 369332
+  Implicit wire 'net1009280' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 369332
+  Implicit wire 'net1009281' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 369332
+  Implicit wire 'net1009282' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 369332
+  Implicit wire 'net1009283' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 369333
+  Implicit wire 'net1009284' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 369333
+  Implicit wire 'net1009285' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 369333
+  Implicit wire 'net1009286' does not have any driver, please m
+ake sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 369333
+  Implicit wire 'net1009287' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 369333
+  Implicit wire 'net1009288' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 369333
+  Implicit wire 'net1009289' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 369334
+  Implicit wire 'net1009290' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 369334
+  Implicit wire 'net1009291' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 369334
+  Implicit wire 'net1009292' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 369334
+ 
+ Implicit wire 'net1009293' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 369334
+  Implicit wire 'net1009294' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 369334
+  Implicit wire 'net1009295' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 369335
+  Implicit wire 'net1009296' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 369335
+  Implicit wire 'net1009297' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 369335
+  Implicit wire 'net1009298' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 369335
+  Implicit wire 'net1009299' does not have any driver, please make sure this 
+  is intended.
+
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 369335
+  Implicit wire 'net1009300' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 369335
+  Implicit wire 'net1009301' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 369336
+  Implicit wire 'net1009302' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 369336
+  Implicit wire 'net1009303' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 369336
+  Implicit wire 'net1009304' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 369336
+  Implicit wire 'net1009305' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 369336
+  Implicit wire 'net1009306' doe
+s not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 369336
+  Implicit wire 'net1009307' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 369337
+  Implicit wire 'net1009308' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 369337
+  Implicit wire 'net1009309' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 369337
+  Implicit wire 'net1009310' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 369337
+  Implicit wire 'net1009311' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 369337
+  Implicit wire 'net1009312' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire h
+as no fanin
+./FFT_0.v, 369337
+  Implicit wire 'net1009313' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 369338
+  Implicit wire 'net1009314' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 369338
+  Implicit wire 'net1009315' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 369338
+  Implicit wire 'net1009316' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 369338
+  Implicit wire 'net1009317' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 369338
+  Implicit wire 'net1009318' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 369338
+  Implicit wire 'net1009319' does not have any driver, please m
+ake sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 369339
+  Implicit wire 'net1009320' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 369339
+  Implicit wire 'net1009321' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 369339
+  Implicit wire 'net1009322' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 369339
+  Implicit wire 'net1009323' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 369339
+  Implicit wire 'net1009324' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 369339
+  Implicit wire 'net1009325' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 369340
+ 
+ Implicit wire 'net1009326' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 369340
+  Implicit wire 'net1009327' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 369340
+  Implicit wire 'net1009328' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 369340
+  Implicit wire 'net1009329' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 369340
+  Implicit wire 'net1009330' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 369340
+  Implicit wire 'net1009331' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 369341
+  Implicit wire 'net1009332' does not have any driver, please make sure this 
+  is intended.
+
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 369341
+  Implicit wire 'net1009333' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 369341
+  Implicit wire 'net1009334' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 369341
+  Implicit wire 'net1009335' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 369341
+  Implicit wire 'net1009336' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 369341
+  Implicit wire 'net1009337' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 369342
+  Implicit wire 'net1009338' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 369342
+  Implicit wire 'net1009339' doe
+s not have any driver, please make sure this 
+  is intended.
+
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 459464
+  Implicit wire 'net1009371' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 459466
+  Implicit wire 'net1009372' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 459466
+  Implicit wire 'net1009373' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 459466
+  Implicit wire 'net1009374' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 459466
+  Implicit wire 'net1009375' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 459466
+  Implicit wire 'net1009376' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 459466
+  Implicit wire 'net1009377' doe
+s not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 459467
+  Implicit wire 'net1009378' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 459467
+  Implicit wire 'net1009379' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 459467
+  Implicit wire 'net1009380' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 459467
+  Implicit wire 'net1009381' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 459467
+  Implicit wire 'net1009382' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 459467
+  Implicit wire 'net1009383' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire h
+as no fanin
+./FFT_0.v, 459468
+  Implicit wire 'net1009384' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 459468
+  Implicit wire 'net1009385' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 459468
+  Implicit wire 'net1009386' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 459468
+  Implicit wire 'net1009387' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 459468
+  Implicit wire 'net1009388' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 459468
+  Implicit wire 'net1009389' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 459469
+  Implicit wire 'net1009390' does not have any driver, please m
+ake sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 459469
+  Implicit wire 'net1009391' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 459469
+  Implicit wire 'net1009392' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 459469
+  Implicit wire 'net1009393' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 459469
+  Implicit wire 'net1009394' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 459469
+  Implicit wire 'net1009395' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 459470
+  Implicit wire 'net1009396' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 459470
+ 
+ Implicit wire 'net1009397' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 459470
+  Implicit wire 'net1009398' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 459470
+  Implicit wire 'net1009399' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 459470
+  Implicit wire 'net1009400' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 459470
+  Implicit wire 'net1009401' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 459471
+  Implicit wire 'net1009402' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 459471
+  Implicit wire 'net1009403' does not have any driver, please make sure this 
+  is intended.
+
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 459471
+  Implicit wire 'net1009404' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 459471
+  Implicit wire 'net1009405' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 459471
+  Implicit wire 'net1009406' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 459471
+  Implicit wire 'net1009407' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 459472
+  Implicit wire 'net1009408' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 459472
+  Implicit wire 'net1009409' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 459472
+  Implicit wire 'net1009410' doe
+s not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 459472
+  Implicit wire 'net1009411' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 459472
+  Implicit wire 'net1009412' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 459472
+  Implicit wire 'net1009413' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 459473
+  Implicit wire 'net1009414' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 459473
+  Implicit wire 'net1009415' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 459473
+  Implicit wire 'net1009416' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire h
+as no fanin
+./FFT_0.v, 459473
+  Implicit wire 'net1009417' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 459473
+  Implicit wire 'net1009418' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 459473
+  Implicit wire 'net1009419' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 459474
+  Implicit wire 'net1009420' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 459474
+  Implicit wire 'net1009421' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 459474
+  Implicit wire 'net1009422' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 459474
+  Implicit wire 'net1009423' does not have any driver, please m
+ake sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 459474
+  Implicit wire 'net1009424' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 459474
+  Implicit wire 'net1009425' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 459475
+  Implicit wire 'net1009426' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 459475
+  Implicit wire 'net1009427' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 459475
+  Implicit wire 'net1009428' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 459475
+  Implicit wire 'net1009429' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 459475
+ 
+ Implicit wire 'net1009430' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 459475
+  Implicit wire 'net1009431' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 459476
+  Implicit wire 'net1009432' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 459476
+  Implicit wire 'net1009433' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 459476
+  Implicit wire 'net1009434' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 459476
+  Implicit wire 'net1009435' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 459476
+  Implicit wire 'net1009436' does not have any driver, please make sure this 
+  is intended.
+
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 459476
+  Implicit wire 'net1009437' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 459477
+  Implicit wire 'net1009438' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 459477
+  Implicit wire 'net1009439' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 459477
+  Implicit wire 'net1009440' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 459477
+  Implicit wire 'net1009441' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 459478
+  Implicit wire 'net1009442' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 459478
+  Implicit wire 'net1009443' doe
+s not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 459478
+  Implicit wire 'net1009444' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 459479
+  Implicit wire 'net1009445' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 459479
+  Implicit wire 'net1009446' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 459479
+  Implicit wire 'net1009447' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 459479
+  Implicit wire 'net1009448' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 459480
+  Implicit wire 'net1009449' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire h
+as no fanin
+./FFT_0.v, 459480
+  Implicit wire 'net1009450' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 459480
+  Implicit wire 'net1009451' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 459480
+  Implicit wire 'net1009452' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 459480
+  Implicit wire 'net1009453' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 459480
+  Implicit wire 'net1009454' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 459481
+  Implicit wire 'net1009455' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 459481
+  Implicit wire 'net1009456' does not have any driver, please m
+ake sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 459481
+  Implicit wire 'net1009457' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 459481
+  Implicit wire 'net1009458' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 459481
+  Implicit wire 'net1009459' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 459481
+  Implicit wire 'net1009460' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 459482
+  Implicit wire 'net1009461' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 459482
+  Implicit wire 'net1009462' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 459482
+ 
+ Implicit wire 'net1009463' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 459482
+  Implicit wire 'net1009464' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 459482
+  Implicit wire 'net1009465' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 459482
+  Implicit wire 'net1009466' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 459483
+  Implicit wire 'net1009467' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 459483
+  Implicit wire 'net1009468' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 459483
+  Implicit wire 'net1009469' does not have any driver, please make sure this 
+  is intended.
+
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 459483
+  Implicit wire 'net1009470' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 459483
+  Implicit wire 'net1009471' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 459483
+  Implicit wire 'net1009472' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 459484
+  Implicit wire 'net1009473' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 459484
+  Implicit wire 'net1009474' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 459484
+  Implicit wire 'net1009475' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 459484
+  Implicit wire 'net1009476' doe
+s not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 459484
+  Implicit wire 'net1009477' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 459484
+  Implicit wire 'net1009478' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 459485
+  Implicit wire 'net1009479' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 459485
+  Implicit wire 'net1009480' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 459485
+  Implicit wire 'net1009481' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 459485
+  Implicit wire 'net1009482' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire h
+as no fanin
+./FFT_0.v, 459485
+  Implicit wire 'net1009483' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 459485
+  Implicit wire 'net1009484' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 459486
+  Implicit wire 'net1009485' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 459486
+  Implicit wire 'net1009486' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 459486
+  Implicit wire 'net1009487' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 459486
+  Implicit wire 'net1009488' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 459486
+  Implicit wire 'net1009489' does not have any driver, please m
+ake sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 459486
+  Implicit wire 'net1009490' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 459487
+  Implicit wire 'net1009491' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 459487
+  Implicit wire 'net1009492' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 459487
+  Implicit wire 'net1009493' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 459487
+  Implicit wire 'net1009494' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 459487
+  Implicit wire 'net1009495' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 459487
+ 
+ Implicit wire 'net1009496' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 459488
+  Implicit wire 'net1009497' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 459488
+  Implicit wire 'net1009498' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 459488
+  Implicit wire 'net1009499' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 459488
+  Implicit wire 'net1009500' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 459488
+  Implicit wire 'net1009501' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 459488
+  Implicit wire 'net1009502' does not have any driver, please make sure this 
+  is intended.
+
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 459489
+  Implicit wire 'net1009503' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 459489
+  Implicit wire 'net1009504' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 459489
+  Implicit wire 'net1009505' does not have any driver, please make sure this 
+  is intended.
+
+
+Warning-[IWNF] Implicit wire has no fanin
+./FFT_0.v, 459489
+  Implicit wire 'net1009506' does not have any driver, please make sure this 
+  is intended.
+
+
+Notice: Ports coerced to inout, use -notice for details
+
+Starting vcs inline pass...
+
+332 modules and 4 UDPs read.
+
+	However, due to incremental compilation, no re-compilation is necessary.
+
+Warning : License for product VCS-BASE-COMPILE will expire within 12 days, on: 14-aug-2025.
+
+If you would like to temporarily disable this message, set 
+ the VCS_LIC_EXPIRE_WARNING environment variable to the number of days
+before expiration that you want this message to start (the minimum is 0).
+
+rm -f _cuarc*.so _csrc*.so pre_vcsobj_*.so share_vcsobj_*.so
+if [ -x ../simv ]; then chmod a-x ../simv; fi
+g++  -o ../simv      -rdynamic  -Wl,-rpath='$ORIGIN'/simv.daidir -Wl,-rpath=./simv.daidir -Wl,-rpath=/tools/synopsys/vcs/W-2024.09-SP1/linux64/lib -L/tools/synopsys/vcs/W-2024.09-SP1/linux64/lib  -Wl,-rpath-link=./  /usr/lib64/libnuma.so.1   objs/amcQw_d.o  _227231_archive_1.so _prev_archive_1.so objs/udps/rhsEg.o objs/udps/H1st2.o objs/udps/vefd4.o objs/udps/tmdWk.o  SIM_l.o      rmapats_mop.o rmapats.o rmar.o rmar_nd.o  rmar_llvm_0_1.o rmar_llvm_0_0.o            -lvirsim -lerrorinf -lsnpsmalloc -lvfs    -lvcsnew -lsimprofile -luclinative /tools/synopsys/vcs/W-2024.09-SP1/linux64/lib/vcs_tls.o   -Wl,-whole-archive  -lvcsucli    -Wl,-no-whole-archive       _vcs_pli_stub_.o   /tools/synopsys/vcs/W-2024.09-SP1/linux64/lib/vcs_save_restore_new.o /tools/synopsys/verdi/W-2024.09-SP2/share/PLI/VCS/LINUX64/pli.a -ldl  -lc -lm -lpthread -ldl 
+../simv up to date
+
+CPU time: 29.997 seconds to compile + 13.919 seconds to elab + .337 seconds to link
+Verdi KDB elaboration done and the database successfully generated
+
+Rebuild finished!
+
+Invoking simulator...
+
+Verdi>./simv -sml=verdi +UVM_VERDI_TRACE=UVM_AWARE +fsdb+gate=off -ucli2Proc -ucli
+*Verdi* Loading libsscore_vcs202409.so
+FSDB Dumper for VCS, Release Verdi_W-2024.09-SP2, Linux x86_64/64bit, 03/03/2025
+(C) 1996 - 2025 by Synopsys, Inc.
+*Verdi* : Create FSDB file '/home/aedu30/fft/verilog/inter.fsdb'
+*Verdi* : Flush all FSDB Files at 0 fs.
+*Verdi* : Enable RPC Server(230650)
+Chronologic VCS simulator copyright 1991-2024
+Contains Synopsys proprietary information.
+Compiler version W-2024.09-SP1_Full64; Runtime version W-2024.09-SP1_Full64;  Aug  3 00:48 2025
+Warning : License for product VCS-BASE-RUNTIME will expire within 12 days, on: 14-aug-2025.
+If you would like to temporarily disable this message, set 
+ the VCS_LIC_EXPIRE_WARNING environment variable to the number of days
+before expiration that you want this message to start (the minimum is 0).
+Verdi>fsdbDumpvars 0 "tb_fft_gate.dut.clk"  +all +trace_process;fsdbDumpvars 0 "tb_fft_gate.dut.rstn"  +all +trace_process;fsdbDumpvars 0 "tb_fft_gate.dut.valid_in"  +all +trace_process;fsdbDumpvars 0 "tb_fft_gate.dut.din_i"  +all +trace_process;fsdbDumpvars 0 "tb_fft_gate.dut.din_q"  +all +trace_process;fsdbDumpvars 0 "tb_fft_gate.dut.valid_out"  +all +trace_process;fsdbDumpvars 0 "tb_fft_gate.dut.dout_i"  +all +trace_process;fsdbDumpvars 0 "tb_fft_gate.dut.dout_q"  +all +trace_process;fsdbDumpvars 0 "tb_fft_gate.dut.U_MODULE0.U_CBFP0.clk"  +all +trace_process;fsdbDumpvars 0 "tb_fft_gate.dut.U_MODULE0.U_CBFP0.rstn"  +all +trace_process;fsdbDumpvars 0 "tb_fft_gate.dut.U_MODULE0.U_CBFP0.real_in"  +all +trace_process;fsdbDumpvars 0 "tb_fft_gate.dut.U_MODULE0.U_CBFP0.imag_in"  +all +trace_process;fsdbDumpvars 0 "tb_fft_gate.dut.U_MODULE0.U_CBFP0.in_valid"  +all +trace_process;fsdbDumpvars 0 "tb_fft_gate.dut.U_MODULE0.U_CBFP0.real_out"  +all +trace_process;fsdbDumpvars 0 "tb_fft_gate.dut.U_MODULE0.U_CBFP0.imag_out"  +all +trace_process;fsdbDumpvars 0 "tb_fft_gate.dut.U_MODULE0.U_CBFP0.index_out"  +all +trace_process;fsdbDumpvars 0 "tb_fft_gate.dut.U_MODULE0.U_CBFP0.valid_out"  +all +trace_process
+*Verdi* : Dumping the signal (tb_fft_gate.dut.clk).
+*Verdi* : Dumping the signal (tb_fft_gate.dut.rstn).
+*Verdi* : Dumping the signal (tb_fft_gate.dut.valid_in).
+*Verdi* : Dumping the signal (tb_fft_gate.dut.din_i).
+*Verdi* : Dumping the signal (tb_fft_gate.dut.din_q).
+*Verdi* : Dumping the signal (tb_fft_gate.dut.valid_out).
+*Verdi* : Dumping the signal (tb_fft_gate.dut.dout_i).
+*Verdi* : Dumping the signal (tb_fft_gate.dut.dout_q).
+*Verdi* : Dumping the signal (tb_fft_gate.dut.U_MODULE0.U_CBFP0.clk).
+*Verdi* : Dumping the signal (tb_fft_gate.dut.U_MODULE0.U_CBFP0.rstn).
+*Verdi* : Dumping the signal (tb_fft_gate.dut.U_MODULE0.U_CBFP0.real_in).
+*Verdi* : Dumping the signal (tb_fft_gate.dut.U_MODULE0.U_CBFP0.imag_in).
+*Verdi* : Dumping the signal (tb_fft_gate.dut.U_MODULE0.U_CBFP0.in_valid).
+*Verdi* : Dumping the signal (tb_fft_gate.dut.U_MODULE0.U_CBFP0.real_out).
+*Verdi* : Dumping the signal (tb_fft_gate.dut.U_MODULE0.U_CBFP0.imag_out).
+*Verdi* : Dumping the signal (tb_fft_gate.dut.U_MODULE0.U_CBFP0.index_out).
+*Verdi* : Dumping the signal (tb_fft_gate.dut.U_MODULE0.U_CBFP0.valid_out).
+*Verdi* : Flush all FSDB Files at 0 fs.
+*Verdi* : Begin traversing the scope (tb_fft_gate.dut), layer (1).
+*Verdi* : Enable +trace_process and +all dumping.
+*Verdi* : End of traversing.
+*Verdi* : Flush all FSDB Files at 0 fs.
+*Verdi* : Begin traversing the scope (tb_fft_gate.dut.U_MODULE0.U_CBFP0), layer (1).
+*Verdi* : Enable +trace_process and +all dumping.
+*Verdi* : End of traversing.
+*Verdi* : Flush all FSDB Files at 0 fs.
+Verdi>run
+Block 0 din_i_bus = 000111111000111111000111111000111111000111111001000000001000000001000000001000000001000000001000000001000000001000000001000000001000000000111111
+Block 1 din_i_bus = 000111011000111100000111100000111100000111101000111101000111101000111101000111101000111110000111110000111110000111110000111110000111111000111111
+Block 2 din_i_bus = 000110110000110110000110110000110111000110111000111000000111000000111000000111001000111001000111010000111010000111010000111011000111011000111011
+Block 3 din_i_bus = 000101110000101110000101111000101111000110000000110000000110001000110001000110010000110010000110011000110011000110100000110100000110101000110101
+Block 4 din_i_bus = 000100100000100101000100101000100110000100111000100111000101000000101001000101001000101010000101010000101011000101100000101100000101101000101101
+Block 5 din_i_bus = 000011001000011010000011011000011011000011100000011101000011101000011110000011111000100000000100000000100001000100010000100010000100011000100100
+Block 6 din_i_bus = 000001101000001110000001111000010000000010000000010001000010010000010011000010011000010100000010101000010110000010110000010111000011000000011000
+Block 7 din_i_bus = 000000001000000010000000010000000011000000100000000101000000101000000110000000111000001000000001001000001001000001010000001011000001100000001100
+Block 8 din_i_bus = 111110100111110101111110110111110111111110111111111000111111001111111010111111011111111011111111100111111101111111110111111110111111111000000000
+Block 9 din_i_bus = 111101000111101001111101010111101010111101011111101100111101101111101101111101110111101111111110000111110000111110001111110010111110011111110100
+Block 10 din_i_bus = 111011101111011110111011110111011111111100000111100000111100001111100010111100011111100011111100100111100101111100101111100110111100111111101000
+Block 11 din_i_bus = 111010011111010100111010100111010101111010110111010110111010111111010111111011000111011001111011001111011010111011011111011011111011100111011100
+Block 12 din_i_bus = 111001011111001100111001100111001101111001101111001110111001110111001111111001111111010000111010000111010001111010001111010010111010010111010011
+Block 13 din_i_bus = 111000101111000101111000110111000110111000110111000111111000111111001000111001000111001000111001001111001001111001010111001010111001010111001011
+Block 14 din_i_bus = 111000001111000010111000010111000010111000010111000010111000011111000011111000011111000011111000011111000100111000100111000100111000101111000101
+Block 15 din_i_bus = 111000000111000000111000000111000000111000000111000000111000000111000000111000000111000000111000001111000001111000001111000001111000001111000001
+Block 16 din_i_bus = 111000001111000001111000001111000001111000001111000000111000000111000000111000000111000000111000000111000000111000000111000000111000000111000000
+Block 17 din_i_bus = 111000101111000100111000100111000100111000011111000011111000011111000011111000011111000010111000010111000010111000010111000010111000001111000001
+Block 18 din_i_bus = 111001010111001010111001010111001001111001001111001000111001000111001000111000111111000111111000110111000110111000110111000101111000101111000101
+Block 19 din_i_bus = 111010010111010010111010001111010001111010000111010000111001111111001111111001110111001110111001101111001101111001100111001100111001011111001011
+Block 20 din_i_bus = 111011100111011011111011011111011010111011001111011001111011000111010111111010111111010110111010110111010101111010100111010100111010011111010011
+Block 21 din_i_bus = 111100111111100110111100101111100101111100100111100011111100011111100010111100001111100000111100000111011111111011110111011110111011101111011100
+Block 22 din_i_bus = 111110011111110010111110001111110000111110000111101111111101110111101101111101101111101100111101011111101010111101010111101001111101000111101000
+Block 23 din_i_bus = 111111111111111110111111110111111101111111100111111011111111011111111010111111001111111000111110111111110111111110110111110101111110100111110100
+Block 24 din_i_bus = 000001100000001011000001010000001001000001001000001000000000111000000110000000101000000101000000100000000011000000010000000010000000001000000000
+Block 25 din_i_bus = 000011000000010111000010110000010110000010101000010100000010011000010011000010010000010001000010000000010000000001111000001110000001101000001100
+Block 26 din_i_bus = 000100011000100010000100010000100001000100000000100000000011111000011110000011101000011101000011100000011011000011011000011010000011001000011000
+Block 27 din_i_bus = 000101101000101100000101100000101011000101010000101010000101001000101001000101000000100111000100111000100110000100101000100101000100100000100100
+Block 28 din_i_bus = 000110101000110100000110100000110011000110011000110010000110010000110001000110001000110000000110000000101111000101111000101110000101110000101101
+Block 29 din_i_bus = 000111011000111011000111010000111010000111010000111001000111001000111000000111000000111000000110111000110111000110110000110110000110110000110101
+Block 30 din_i_bus = 000111111000111110000111110000111110000111110000111110000111101000111101000111101000111101000111101000111100000111100000111100000111011000111011
+Block 31 din_i_bus = 001000000001000000001000000001000000001000000001000000001000000001000000001000000001000000000111111000111111000111111000111111000111111000111111
+tb_fft_gate.sv, 127 :     $stop;
+           V C S   S i m u l a t i o n   R e p o r t 
+Time: 1775000000 fs
+CPU Time:      1.940 seconds;       Data structure size:  75.8Mb
+Sun Aug  3 00:52:39 2025
+debExit

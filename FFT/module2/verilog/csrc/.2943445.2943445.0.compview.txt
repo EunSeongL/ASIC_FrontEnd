@@ -1,0 +1,9 @@
+{"vcs1":{"timestamp_begin":1754133009.568327810, "rt":2.10, "ut":2.43, "st":0.28}}
+{"vcselab":{"timestamp_begin":1754133011.752113946, "rt":1.71, "ut":1.60, "st":0.10}}
+{"link":{"timestamp_begin":1754133013.527796960, "rt":0.21, "ut":0.10, "st":0.10}}
+{"SNPS_VCS_INTERNAL_ROOT_START_TIME": 1754133009.152805240}
+{"VCS_COMP_START_TIME": 1754133009.152805240}
+{"VCS_COMP_END_TIME": 1754133013.845243937}
+{"VCS_USER_OPTIONS": "-full64 -kdb -debug_access+all -sverilog -v /pdk/GF22FDX_SC7P5T_116CPP_BASE_CSC20L_FDK_RELV02R80/verilog/GF22FDX_SC7P5T_116CPP_BASE_CSC20L.v -v /pdk/GF22FDX_SC7P5T_116CPP_BASE_CSC20L_FDK_RELV02R80/verilog/prim.v -f butterfly_filelist"}
+{"vcs1": {"peak_mem": 364908}}
+{"vcselab": {"peak_mem": 189820}}

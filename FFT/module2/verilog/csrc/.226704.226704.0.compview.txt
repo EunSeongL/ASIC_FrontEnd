@@ -1,0 +1,9 @@
+{"vcs1":{"timestamp_begin":1754149682.489548271, "rt":23.48, "ut":28.81, "st":1.14}}
+{"vcselab":{"timestamp_begin":1754149706.032889605, "rt":13.95, "ut":13.63, "st":0.26}}
+{"link":{"timestamp_begin":1754149720.029725099, "rt":0.27, "ut":0.15, "st":0.12}}
+{"SNPS_VCS_INTERNAL_ROOT_START_TIME": 1754149682.135596151}
+{"VCS_COMP_START_TIME": 1754149682.135596151}
+{"VCS_COMP_END_TIME": 1754149720.399466173}
+{"VCS_USER_OPTIONS": "-full64 -kdb -debug_access+all -sverilog -v /pdk/GF22FDX_SC7P5T_116CPP_BASE_CSC20L_FDK_RELV02R80/verilog/GF22FDX_SC7P5T_116CPP_BASE_CSC20L.v -v /pdk/GF22FDX_SC7P5T_116CPP_BASE_CSC20L_FDK_RELV02R80/verilog/prim.v -f fft_filelist"}
+{"vcs1": {"peak_mem": 635824}}
+{"vcselab": {"peak_mem": 709044}}
