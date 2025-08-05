@@ -54,7 +54,7 @@ module tb_fft ();
             $finish;
         end
 
-        #15 rstn = 1;
+        #15; rstn = 1;
 
 
 	i_blk = 0; j_blk = 0;
