@@ -32,8 +32,9 @@ module FFT #(
         o_module2_re[0:NUM-1], o_module2_im[0:NUM-1];
     logic valid_out_module2;
 
-    (* dont_touch = "true" *) logic [4:0] o_cbfp0_index[0:NUM-1];
-    (* dont_touch = "true" *) logic [4:0] o_cbfp1_index[0:NUM-1];
+    
+    logic [4:0] o_cbfp0_index[0:NUM-1];
+    logic [4:0] o_cbfp1_index[0:NUM-1];
 
     module0 #() U_MODULE0 (
         .clk (clk),

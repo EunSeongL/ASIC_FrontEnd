@@ -109,27 +109,6 @@ module butterfly11 #(
     assign muxed_re = bfly11_en ? o_bf11_low_re : shift_bfly11_re;
     assign muxed_im = bfly11_en ? o_bf11_low_im : shift_bfly11_im;
 
-    // Twiddle Factor LUT (8개)
-    logic signed [TW_WIDTH-1:0] tw_re[0:7], tw_im[0:7];
-    always @(posedge clk, negedge rstn) begin
-        if (~rstn) begin
-            for (i = 0; i < 8 ; i = i + 1 ) begin
-                tw_re[i] <= 0;
-                tw_im[i] <= 0;
-            end
-        end
-        else begin
-            tw_re[0] <=  256; tw_im[0] <=    0;
-            tw_re[1] <=  256; tw_im[1] <=    0;
-            tw_re[2] <=  256; tw_im[2] <=    0;
-            tw_re[3] <=    0; tw_im[3] <= -256;
-            tw_re[4] <=  256; tw_im[4] <=    0;
-            tw_re[5] <=  181; tw_im[5] <= -181;
-            tw_re[6] <=  256; tw_im[6] <=    0;
-            tw_re[7] <= -181; tw_im[7] <= -181;
-        end
-    end
-
     // index 계산 (64씩 그룹핑)
     logic [2:0] tw_idx;
     logic [2:0] sample_cnt;

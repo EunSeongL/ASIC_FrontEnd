@@ -35,7 +35,11 @@ module cbfp_stage0 #(
     logic signed [BW_OUT-1:0] norm_imag[0:BLOCK_SIZE-1];
     logic [4:0] norm_index[0:BLOCK_SIZE-1];
 
+    logic last;
+    logic [5:0] out_cnt;
+
     logic in_valid_d;
+    
     always @(posedge clk, negedge rstn) begin
         if(!rstn) begin
             in_valid_d <= 0;
@@ -131,8 +135,16 @@ module cbfp_stage0 #(
         .out_valid(out_valid)
     );
 
-    logic last;
-    logic [5:0] out_cnt;
+    
+    always @(posedge clk, negedge rstn) begin
+        if(~rstn) begin
+            out_cnt <= 0;
+        end else if (last) begin
+            out_cnt <= out_cnt + 1;
+        end else out_cnt <= 0;
+
+    end
+
     always @(posedge clk or negedge rstn) begin
         if (!rstn) begin
             for (j = 0; j < BLOCK_SIZE; j = j + 1) begin
@@ -153,16 +165,6 @@ module cbfp_stage0 #(
         end else if(out_cnt >= 32) last <= 0;
     end
 
-    
-    always @(posedge clk, negedge rstn) begin
-        if(~rstn) begin
-            out_cnt <= 0;
-        end else if (last) begin
-            out_cnt <= out_cnt + 1;
-        end else out_cnt <= 0;
-
-    end
-
     always @(posedge clk or negedge rstn) begin
         if (!rstn) begin
             output_cnt <= 0;
@@ -171,17 +173,25 @@ module cbfp_stage0 #(
                 imag_out[k] <= 0;
                 index_out[k] <= 0;
             end
-        end else if (last == 1 && (out_cnt <=31)) begin
+        end else if (last == 1 && (out_cnt <= 31)) begin
+            int idx_o;
             for (k = 0; k < BATCH_SIZE; k = k + 1) begin
-                automatic int idx_o = output_cnt * BATCH_SIZE + k;
+                idx_o = output_cnt * BATCH_SIZE + k;
                 real_out[k]  <= norm_real[idx_o];
                 imag_out[k]  <= norm_imag[idx_o];
                 index_out[k] <= norm_index[idx_o];
             end
             output_cnt <= output_cnt + 1;
-        end else if (output_cnt == 3) begin
-            output_cnt <= 0;
+        end else begin
+            // 기본값 할당
+            for (k = 0; k < BATCH_SIZE; k = k + 1) begin
+                real_out[k] <= 0;
+                imag_out[k] <= 0;
+                index_out[k] <= 0;
+            end
+            if (output_cnt == 3) output_cnt <= 0;
         end
     end
+
 
 endmodule

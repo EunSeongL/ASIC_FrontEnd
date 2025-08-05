@@ -134,24 +134,29 @@ module mag_detect_0 #(
             global_min <= 5'd31;
             out_cnt    <= 3'd0;
             min_chain  <= 5'd0;
-            out_valid <= 0;
+            out_valid  <= 1'b0;
         end else begin
-            out_valid <= 0;
-            if (local_min < global_min )
+            out_valid <= 1'b0;
+
+            // global_min 갱신
+            if (valid && (local_min < global_min)) begin
                 global_min <= local_min;
-                
-            if (out_cnt == 3'd4) begin
-                if (local_min < global_min )
-                    min_chain <= local_min;
-                else
-                    min_chain <= global_min;
-                out_valid <= 1;
-                global_min <= 5'd31;  // 초기화
-                out_cnt <= 3'd1;
-            end else if(valid) begin
+            end
+
+            // out_cnt 증가
+            if (valid) begin
                 out_cnt <= out_cnt + 1;
+            end
+
+            // 결과 출력
+            if (out_cnt == 3'd4) begin
+                min_chain  <= (local_min < global_min) ? local_min : global_min;
+                out_valid  <= 1'b1;
+                global_min <= 5'd31;     // 초기화
+                out_cnt    <= 3'd1;      // 다음 batch 시작
             end
         end
     end
+
 
 endmodule

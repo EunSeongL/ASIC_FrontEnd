@@ -83,7 +83,6 @@ module cbfp_stage1 #(
     logic signed [BW_IN-1:0] real_delay[0:1][0:BLOCK_SIZE-1];
     logic signed [BW_IN-1:0] imag_delay[0:1][0:BLOCK_SIZE-1];
 
-    // real_buf → real_delay 로 1클럭 딜레이
     always_ff @(posedge clk or negedge rstn) begin
         if (!rstn) begin
             for (b = 0; b < 2; b++) begin
@@ -154,17 +153,13 @@ module cbfp_stage1 #(
                 end
             end
             last <= 1;
-        end else if (!out_valid_0 || !out_valid_1) begin
+        end else begin
             last <= 0;
         end
     end
 
-    logic last_flag;
-
-
-
     logic [5:0] val_cnt;
-    always @(posedge clk or negedge rstn) begin
+    always_ff @(posedge clk or negedge rstn) begin
         if (!rstn) begin
             for (k = 0; k < BATCH_SIZE; k++) begin
                 real_out[k]  <= 0;
@@ -186,8 +181,21 @@ module cbfp_stage1 #(
         end else if (val_cnt >= 31) begin
             valid_out <= 0;
             val_cnt   <= 0;
+            // 기본값 할당
+            for (k = 0; k < BATCH_SIZE; k++) begin
+                real_out[k]  <= 0;
+                imag_out[k]  <= 0;
+                index_out[k] <= 0;
+            end
+        end else begin
+            // 기본값 할당
+            for (k = 0; k < BATCH_SIZE; k++) begin
+                real_out[k]  <= 0;
+                imag_out[k]  <= 0;
+                index_out[k] <= 0;
+            end
+            valid_out <= 0;
         end
     end
-
 
 endmodule

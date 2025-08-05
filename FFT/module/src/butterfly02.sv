@@ -157,26 +157,33 @@ module butterfly02 #(
     assign do1_re = mul_re;
     assign do1_im = mul_im;
 
+    logic [8:0] twf_index [0:NUM-1];
+
+    always_comb begin
+        for (int ii = 0; ii < NUM; ii++) begin
+            twf_index[ii] = ii + (mul_cnt << 4); // *16 대신 시프트
+        end
+    end
+    
     genvar k;
-    generate //16개씩 뽑기
+    generate
         for (k = 0; k < NUM; k = k + 1 ) begin
             step02_twf #(
                 .INDEX_WIDTH(512),
-                .BIT_WIDTH(9) //2.7format
+                .BIT_WIDTH(9)
             ) U_STEP02_FAC_LOW (
-                .index(9'(k+mul_cnt*16)),
+                .index(twf_index[k]),
                 .twf_out(fac_02_real[k])
             );
-
+    
             twf_02_imag #(
                 .INDEX_WIDTH(512),
-                .BIT_WIDTH(9) //2.7format
+                .BIT_WIDTH(9)
             ) U_TWF_02_IMAG_HIGH (
-                .index(9'(k+mul_cnt*16)),
+                .index(twf_index[k]),
                 .twf_out(fac_02_imag[k])
             );
-
         end
-    endgenerate    
+    endgenerate   
 
 endmodule

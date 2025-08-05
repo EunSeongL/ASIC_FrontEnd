@@ -20,7 +20,7 @@ module module0 #(
     output  signed [OUT_BIT_WIDTH-1:0] dout_i   [0:N-1],  //re output
     output  signed [OUT_BIT_WIDTH-1:0] dout_q   [0:N-1],  //im output
 
-    output  [4:0] cbfp_index[0:N-1]
+    output  logic[4:0] cbfp_index[0:N-1]
 );
 
     logic signed [BF00_BIT-1:0] o_bf00_re[0:N-1], o_bf00_im[0:N-1];
@@ -32,8 +32,10 @@ module module0 #(
     logic signed [BF02_BIT-1:0] o_bf02_re[0:N-1], o_bf02_im[0:N-1];
     logic valid_out_bf02;
 
-    logic signed [OUT_BIT_WIDTH-1:0] o_cbfp0_re[0:N-1], o_cbfp0_im[0:N-1];
-    logic valid_out_cbfp0;
+    //logic signed [OUT_BIT_WIDTH-1:0] o_cbfp0_re[0:N-1], o_cbfp0_im[0:N-1];
+    //logic valid_out_cbfp0;
+
+    //logic [4:0] o_cbfp_index[0:N-1];
 
 
 
@@ -84,10 +86,10 @@ module module0 #(
         .imag_in(o_bf02_im),
         .in_valid(valid_out_bf02),
 
-        .real_out (o_cbfp0_re),
-        .imag_out (o_cbfp0_im),
+        .real_out (dout_i),
+        .imag_out (dout_q),
         .index_out(cbfp_index),
-        .valid_out(valid_out_cbfp0)
+        .valid_out(valid_out)
     );
 
     // cbfp #() U_CBFP0 (
@@ -105,23 +107,10 @@ module module0 #(
     // );
 
 
-    assign dout_i = o_cbfp0_re;
-    assign dout_q = o_cbfp0_im;
-    assign valid_out = valid_out_cbfp0;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    //assign dout_i = o_cbfp0_re;
+    //assign dout_q = o_cbfp0_im;
+    //assign valid_out = valid_out_cbfp0;
+    //assign cbfp_index = o_cbfp_index;
 
 
 

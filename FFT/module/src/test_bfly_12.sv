@@ -89,41 +89,44 @@ module test_bfly_12 #(
         end
     end
 
+    logic [8:0] twf_index_low [0:N-1];
+    logic [8:0] twf_index_high [0:N-1];
+    
+    always_comb begin
+        for (int ii = 0; ii < N; ii++) begin
+            twf_index_low[ii]  = ii + inner_blk_cnt*16;
+            twf_index_high[ii] = ii + inner_blk_cnt*16 + N;
+        end
+    end
+    
     genvar k;
-    generate //16개씩 뽑기
-        for (k = 0; k < N; k = k + 1 ) begin
-            twf_12_real #(
-                .INDEX_WIDTH(512),
-                .BIT_WIDTH(9) //2.7format
-            ) U_STEP02_FAC_LOW (
-                .index(9'(k+inner_blk_cnt*16)),
+    generate
+        for (k = 0; k < N; k++) begin
+            twf_12_real #(.INDEX_WIDTH(512), .BIT_WIDTH(9))
+            U_STEP02_FAC_LOW (
+                .index(twf_index_low[k]),
                 .twf_out(fac_02_real_low[k])
             );
-
-            twf_12_real #(
-                .INDEX_WIDTH(512),
-                .BIT_WIDTH(9) //2.7format
-            ) U_STEP02_FAC_HIGH (
-                .index(9'(k+inner_blk_cnt*16+N)),
+    
+            twf_12_real #(.INDEX_WIDTH(512), .BIT_WIDTH(9))
+            U_STEP02_FAC_HIGH (
+                .index(twf_index_high[k]),
                 .twf_out(fac_02_real_high[k])
             );
-
-            twf_12_imag #(
-                .INDEX_WIDTH(512),
-                .BIT_WIDTH(9) //2.7format
-            ) U_TWF_02_IMAG_LOW (
-                .index(9'(k+inner_blk_cnt*16)),
+    
+            twf_12_imag #(.INDEX_WIDTH(512), .BIT_WIDTH(9))
+            U_TWF_02_IMAG_LOW (
+                .index(twf_index_low[k]),
                 .twf_out(fac_02_imag_low[k])
             );
-
-            twf_12_imag #(
-                .INDEX_WIDTH(512),
-                .BIT_WIDTH(9) //2.7format
-            ) U_TWF_02_IMAG_HIGH (
-                .index(9'(k+inner_blk_cnt*16+N)),
+    
+            twf_12_imag #(.INDEX_WIDTH(512), .BIT_WIDTH(9))
+            U_TWF_02_IMAG_HIGH (
+                .index(twf_index_high[k]),
                 .twf_out(fac_02_imag_high[k])
             );
         end
-    endgenerate    
+    endgenerate
+   
 
 endmodule

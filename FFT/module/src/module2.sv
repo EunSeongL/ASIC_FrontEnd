@@ -16,8 +16,8 @@ module module2 #(
     input signed [IN_BIT_WIDTH-1:0] din_i   [0:N-1],  //re input
     input signed [IN_BIT_WIDTH-1:0] din_q   [0:N-1],  //im input
 
-    input [4:0] index_in0  [0:N-1],
-    input [4:0] index_in1  [0:N-1],
+    input logic [4:0] index_in0  [0:N-1],
+    input logic [4:0] index_in1  [0:N-1],
     input       valid_in_m0,
     input       valid_in_m1,
 
@@ -35,8 +35,8 @@ module module2 #(
     logic signed [BF02_BIT-1:0] o_bf22_re[0:N-1], o_bf22_im[0:N-1];
     logic valid_out_bf22;
 
-    logic signed [OUT_BIT_WIDTH-1:0] o_cbfp2_re[0:N-1], o_cbfp2_im[0:N-1];
-    logic valid_out_cbfp2;
+    //logic signed [OUT_BIT_WIDTH-1:0] o_cbfp2_re[0:N-1], o_cbfp2_im[0:N-1];
+    //logic valid_out_cbfp2;
 
 
     butterfly20 #() U_BF20 (
@@ -91,14 +91,14 @@ module module2 #(
         .index1_in(index_in1),
         .in_valid_index1(valid_in_m1),
 
-        .real_out (o_cbfp2_re),
-        .imag_out (o_cbfp2_im),
-        .valid_out(valid_out_cbfp2)
+        .real_out (dout_i),
+        .imag_out (dout_q),
+        .valid_out(valid_out)
     );
 
-    assign dout_i = o_cbfp2_re;
-    assign dout_q = o_cbfp2_im;
-    assign valid_out = valid_out_cbfp2;
+    //assign dout_i = o_cbfp2_re;
+    //assign dout_q = o_cbfp2_im;
+    //assign valid_out = valid_out_cbfp2;
 
     // assign dout_i = o_cbfp2_re;
     // assign dout_q = o_cbfp2_im;

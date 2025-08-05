@@ -14,10 +14,7 @@ module shift_reg #(
     input signed [WIDTH-1:0] data_in_imag [0:15],
 
     output logic signed [WIDTH-1:0] data_out_real [0:15],
-    output logic signed [WIDTH-1:0] data_out_imag [0:15],
-
-    output logic full,
-    output logic empty
+    output logic signed [WIDTH-1:0] data_out_imag [0:15]
 );
 
     reg signed [WIDTH-1:0] shift_din_real [0:DELAY_LENGTH-1][0:15];
@@ -26,6 +23,9 @@ module shift_reg #(
     reg [$clog2(DELAY_LENGTH+1)-1:0] count;
     integer i, j;
 
+    logic full;
+    logic empty;
+    
     // full/empty 상태 관리
     assign full  = (count == DELAY_LENGTH);
     assign empty = (count == 0);
