@@ -34,6 +34,7 @@
 
 ../src/reorder.sv
 ../src/FFT.sv
+
 ../testbench/tb_fft.sv
 
 
