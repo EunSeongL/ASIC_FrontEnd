@@ -40,8 +40,8 @@ module tb_fft_gate ();
   // 100 MHz clock
   always #5 clk = ~clk;
 
-  // detect falling edge of valid_out
-  always @(posedge clk) begin
+  // detect falling edge of valid_out → posedge로 변경
+  always @(negedge clk) begin
     prev_valid_out <= valid_out;
     if (prev_valid_out && !valid_out)
       falling_edge_detected <= 1;
@@ -75,12 +75,12 @@ module tb_fft_gate ();
     falling_edge_detected = 0;
 
     // release reset
-    #150 rstn = 1;
-     @(negedge clk);
+    #15; rstn = 1;
+    repeat(5) @(negedge clk);
+
     //────────────────────────────────────────────────────────────────────────
     // 4) first block: pack then assert at negedge
     //────────────────────────────────────────────────────────────────────────
-    // pack block 0
     valid_in = 1;
     for (j_blk = 0; j_blk < NUM; j_blk = j_blk + 1) begin
       din_i_bus[j_blk*IN_WIDTH +: IN_WIDTH]
@@ -88,38 +88,31 @@ module tb_fft_gate ();
       din_q_bus[j_blk*IN_WIDTH +: IN_WIDTH]
         = din_q_data[0*NUM + j_blk];
     end
-    // assert valid_in at falling edge
-    
-    // debug display
+
     $display("Block %0d din_i_bus = %b", 0, din_i_bus);
-    // advance to next posedge
     @(negedge clk);
     
     //────────────────────────────────────────────────────────────────────────
-    // 5) remaining 31 blocks: pack & sample at posedge
+    // 5) remaining 31 blocks
     //────────────────────────────────────────────────────────────────────────
     for (i_blk = 1; i_blk < N/NUM; i_blk = i_blk + 1) begin
-      // pack block i_blk
       for (j_blk = 0; j_blk < NUM; j_blk = j_blk + 1) begin
         din_i_bus[j_blk*IN_WIDTH +: IN_WIDTH]
           = din_i_data[i_blk*NUM + j_blk];
         din_q_bus[j_blk*IN_WIDTH +: IN_WIDTH]
           = din_q_data[i_blk*NUM + j_blk];
       end
-      // sample on rising edge (valid_in remains 1)
       @(negedge clk);
-      
       $display("Block %0d din_i_bus = %b", i_blk, din_i_bus);
     end
 
     //────────────────────────────────────────────────────────────────────────
     // 6) deassert valid_in after all 32 blocks
     //────────────────────────────────────────────────────────────────────────
-    // @(posedge clk);
-      valid_in = 0;
+    valid_in = 0;
 
     //────────────────────────────────────────────────────────────────────────
-    // 7) wait for end of output burst, then finish
+    // 7) wait for end of output burst, then finish.
     //────────────────────────────────────────────────────────────────────────
     wait (falling_edge_detected);
     #100;
@@ -128,9 +121,9 @@ module tb_fft_gate ();
   end
 
   //──────────────────────────────────────────────────────────────────────────
-  // Collect outputs on each valid_out rising edge
+  // Collect outputs on each valid_out → posedge에서 캡처
   //──────────────────────────────────────────────────────────────────────────
-  always @(posedge clk) if (valid_out) begin
+  always @(negedge clk) if (valid_out) begin
     for (int j = 0; j < NUM; j = j + 1) begin
       dout_i[j] = $signed(dout_i_bus[j*OUT_WIDTH +: OUT_WIDTH]);
       dout_q[j] = $signed(dout_q_bus[j*OUT_WIDTH +: OUT_WIDTH]);
@@ -141,6 +134,20 @@ module tb_fft_gate ();
   //──────────────────────────────────────────────────────────────────────────
   // DUT instantiation
   //──────────────────────────────────────────────────────────────────────────
+
+  /*
+  butterfly02 dut (
+    .clk       (clk),
+    .rstn      (rstn),
+    .valid_in  (valid_in),
+    .din_i     (din_i_bus),
+    .din_q     (din_q_bus),
+    .valid_out (valid_out),
+    .do1_re    (dout_i_bus),
+    .do1_im    (dout_q_bus)
+  );
+  */
+  
   FFT dut (
     .clk       (clk),
     .rstn      (rstn),
