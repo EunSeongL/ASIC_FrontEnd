@@ -1,16 +1,15 @@
 # 📌 DSP Radix-2 FFT Filter Design 프로젝트
 
 ### 📜 목차 (Table of Contents)
-- [📌 DSP Radix-2 FFT Filter Design 프로젝트](#-dsp-radix-2-fft-filter-design-프로젝트)
-    - [📜 목차 (Table of Contents)](#-목차-table-of-contents)
-    - [🎯 프로젝트 개요](#-프로젝트-개요)
-    - [🙋‍♂️ 역할 분담](#️-역할-분담)
-    - [💻 개발 환경](#-개발-환경)
-    - [📂 프로젝트 구조](#-프로젝트-구조)
-    - [🔎 알고리즘 검증](#-알고리즘-검증)
-    - [🔎 검증 및 시뮬레이션](#-검증-및-시뮬레이션)
-    - [🛠️ Trouble Shooting](#️-trouble-shooting)
-    - [🧠 고찰](#-고찰)
+
+[프로젝트 개요](#-프로젝트-개요)
+[역할 분담](#️-역할-분담)
+[개발 환경](#-개발-환경)
+[프로젝트 구조](#-프로젝트-구조)
+[알고리즘 검증](#-알고리즘-검증)
+[검증 및 시뮬레이션](#-검증-및-시뮬레이션)
+[Trouble Shooting](#️-trouble-shooting)
+[고찰](#-고찰)
 
 ---
 
