@@ -1,7 +1,7 @@
 # 📌 512 Point Radix-2 FFT Filter Design
 
 ### 🎯 프로젝트 개요
-
+- MATLAB으로 
 ---
 
 ### 🙋‍♂️ 역할 분담
@@ -88,4 +88,5 @@ Code 최적화
 
 
 ---
+
 
