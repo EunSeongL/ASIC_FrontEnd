@@ -25,7 +25,7 @@
 
 - **EDA Tools**: Xilinx Vivado HLx Editions, Synopsys VCS, Synopsys Verdi  
 - **Languages**: SystemVerilog, MATLAB  
-- **IDE / Tools**: Visual Studio Code, MobaXterm  
+- **IDE Tools**: Visual Studio Code, MobaXterm  
 
 ---
 
