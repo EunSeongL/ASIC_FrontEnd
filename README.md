@@ -43,8 +43,8 @@ FFT-Design/
 
 ### 🔎 알고리즘 검증
 
-📂 [참고문헌](./FFT-Design/Docs) <br>
-📂 [MATLAB 알고리즘 검증 코드](./FFT-Design/Software)
+📂 [참고문헌](./Docs) <br>
+📂 [MATLAB 알고리즘 검증 코드](./Software)
 
 ---
 
