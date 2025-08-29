@@ -51,7 +51,7 @@ FFT-Design/
 
 ### 🔎 알고리즘 검증
 
-📂 [참고문헌](./FFT-Design/Docs/A new approach to pipeline FFT processor.pdf)
+📂 [참고문헌](./FFT-Design/Docs/A new approach to pipeline FFT processor.pdf)<br>
 📂 [MATLAB 알고리즘 검증 코드](./FFT-Design/Software)
 
 ---
