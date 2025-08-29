@@ -1,7 +1,13 @@
 # 📌 512 Point Radix-2 FFT Filter Design
 
 ### 🎯 프로젝트 개요
-- MATLAB을 활용해 Radix-2 FFT의 Butterfly 구조를 구현하고 Floating-Point와 Fixed-Point 차이를 분석하였으며, BFP와 CBFP를 적용한 알고리즘을 검증했습니다. 이후 소프트웨어 모델링을 기반으로 하드웨어 모듈을 설계하고, Synopsys EDA Tool을 이용해 RTL 및 Gate Level 검증을 수행하였으며, Vivado를 활용해 FPGA 검증과 비트스트림 생성을 포함한 전반적인 Front-End 과정을 진행했습니다.
+전반적인 Front-End 과정을 진행했습니다.
+- MATLAB을 활용해 Radix-2 FFT의 Butterfly 구조를 이해
+- Floating-Point와 Fixed-Point 차이를 분석
+- BFP와 CBFP를 적용한 알고리즘을 분석
+- 소프트웨어 모델링을 기반으로 하드웨어 모듈을 설계
+- Synopsys EDA Tool을 이용해 RTL 및 Gate Level 검증.
+- Vivado를 활용해 FPGA 검증과 Bitstream생성
 ---
 
 ### 🙋‍♂️ 역할 분담
@@ -88,6 +94,7 @@ Code 최적화
 
 
 ---
+
 
 
 
