@@ -1,4 +1,4 @@
-# 📌 Radix-2 FFT Filter Design 프로젝트
+# 📌 512 Point Radix-2 FFT Filter Design
 
 ### 🎯 프로젝트 개요
 
@@ -85,5 +85,6 @@ Area 개선
 Clock 줄이기
 Code 최적화
 ```
+
 
 ---
