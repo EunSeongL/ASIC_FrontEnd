@@ -15,11 +15,6 @@
 
 ### 🎯 프로젝트 개요
 
-- **목표**  
-  - Radix-2 FFT의 Butterfly 구조 및 파이프라인 동작을 MATLAB으로 검증  
-  - 다양한 수치 표현(Floating-Point, Fixed-Point (Q-format), BFP, CBFP)의 설계 차이 분석  
-  - RTL 설계 기반 FPGA 실험을 통해 정밀도, 연산 효율, 지연(latency), 리소스 효율성 등을 비교 평가함으로써 설계 전 과정을 익히는 것  
-
 ---
 
 ### 🙋‍♂️ 역할 분담
