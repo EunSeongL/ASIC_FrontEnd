@@ -1,8 +1,6 @@
 # 📌 DSP Radix-2 FFT Filter Design 프로젝트
 
 ### 📜 목차 (Table of Contents)
-
-- [📌 DSP Radix-2 FFT Filter Design 프로젝트](#-dsp-radix-2-fft-filter-design-프로젝트)
     - [📜 목차 (Table of Contents)](#-목차-table-of-contents)
     - [🎯 프로젝트 개요](#-프로젝트-개요)
     - [🙋‍♂️ 역할 분담](#️-역할-분담)
