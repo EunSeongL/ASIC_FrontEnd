@@ -54,20 +54,20 @@ FFT-Design/
 
 ### 🔎 검증 및 시뮬레이션
 
-🔎 RTL Level 검증 (Synopsys 시뮬레이션)
+🔎 **RTL Level 검증 (Synopsys 시뮬레이션)**
 
 - 주요 모듈: Butterfly 단위 연산, 파이프라인 레지스터, Twiddle ROM, 제어 로직, BFP/CBFP 모듈 등  
 - 데이터 흐름, 제어 신호, 모듈 인터페이스 및 역할 설명  
 
 ---
 
-🔎 Gate Level 검증 (Synopsys 시뮬레이션)
+🔎 **Gate Level 검증 (Synopsys 시뮬레이션)**
 - 합성 도구 (예: Synopsys Design Compiler) 사용  
 - 면적(area), 타이밍(timing), 파워 및 클록 제약 등 분석 
 
 ---
 
-🔎 FPGA 검증 (Vivado 시뮬레이션)
+🔎 **FPGA 검증 (Vivado 시뮬레이션)**
 - FPGA에서의 실제 동작 시험, 리소스(utilization)
 
 ---
