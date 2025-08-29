@@ -1,4 +1,4 @@
-# 📌 DSP Radix-2 FFT Filter Design 프로젝트
+# 📌 Radix-2 FFT Filter Design 프로젝트
 
 ### 🎯 프로젝트 개요
 
