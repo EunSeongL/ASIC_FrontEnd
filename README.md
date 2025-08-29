@@ -1,19 +1,20 @@
 # 📌 DSP Radix-2 FFT Filter Design 프로젝트
 
-### 📜 목차 (Table of Contents)
-
-[프로젝트 개요](#-프로젝트-개요)
-[역할 분담](#️-역할-분담)
-[개발 환경](#-개발-환경)
-[프로젝트 구조](#-프로젝트-구조)
-[알고리즘 검증](#-알고리즘-검증)
-[검증 및 시뮬레이션](#-검증-및-시뮬레이션)
-[Trouble Shooting](#️-trouble-shooting)
-[고찰](#-고찰)
+- [📌 DSP Radix-2 FFT Filter Design 프로젝트](#-dsp-radix-2-fft-filter-design-프로젝트)
+    - [🎯 프로젝트 개요 {#프로젝트-개요}](#-프로젝트-개요-프로젝트-개요)
+    - [🙋‍♂️ 역할 분담 {#역할-분담}](#️-역할-분담-역할-분담)
+    - [💻 개발 환경 {#개발-환경}](#-개발-환경-개발-환경)
+    - [📂 프로젝트 구조](#-프로젝트-구조)
+    - [🏗️ FFT 구조](#️-fft-구조)
+    - [🔎 알고리즘 검증](#-알고리즘-검증)
+    - [🔎 검증 및 시뮬레이션](#-검증-및-시뮬레이션)
+    - [🛠️ Trouble Shooting](#️-trouble-shooting)
+    - [🧠 고찰](#-고찰)
 
 ---
 
-### 🎯 프로젝트 개요
+### 🎯 프로젝트 개요 {#프로젝트-개요}
+
 - **목표**  
   - Radix-2 FFT의 Butterfly 구조 및 파이프라인 동작을 MATLAB으로 검증  
   - 다양한 수치 표현(Floating-Point, Fixed-Point (Q-format), BFP, CBFP)의 설계 차이 분석  
@@ -21,11 +22,11 @@
 
 ---
 
-### 🙋‍♂️ 역할 분담
+### 🙋‍♂️ 역할 분담 {#역할-분담}
 
 ---
 
-### 💻 개발 환경
+### 💻 개발 환경 {#개발-환경}
 
 - **EDA Tools**: Xilinx Vivado HLx Editions, Synopsys VCS, Synopsys Verdi  
 - **Languages**: SystemVerilog, MATLAB  
@@ -48,6 +49,9 @@ FFT-Design/
 ```
 
 ---
+
+### 🏗️ FFT 구조
+
 
 ### 🔎 알고리즘 검증
 
