@@ -33,7 +33,7 @@
 
 ```
 FFT-Design/
-├── docs/           # 설계 보고서, 참고 자료
+├── docs/            # 설계 보고서, 참고 자료
 ├── software/        # 알고리즘 검증
 ├── hardware/   
 │    ├── rtl/        # SystemVerilog 설계 소스
